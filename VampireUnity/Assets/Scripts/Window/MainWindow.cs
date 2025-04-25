@@ -17,4 +17,14 @@ public class MainWindow : BasePanel
    {
      UITool.S.GetChildGameObject("MainWindow").GetComponent<GraphicRaycaster>().enabled = false;
    }
+   
+   public override void OnResume()
+   {
+      UITool.S.GetChildGameObject("MainWindow").GetComponent<GraphicRaycaster>().enabled = true;
+   }
+   
+   public override void OnExit()
+   {
+      UIManager.S.DestroyUIWindow(new UIType("Prefabs/MainWindow"));
+   }
 }

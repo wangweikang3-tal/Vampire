@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class UIManager:XSingleton<UIManager>
 {
-    private Dictionary<UIType, GameObject> uiDic;
+    private Dictionary<string, GameObject> uiDic;
     public UIManager()
     {
-        uiDic = new Dictionary<UIType, GameObject>();
+        uiDic = new Dictionary<string, GameObject>();
     }
 
     public GameObject GetUIWindow(UIType uiType)
@@ -18,9 +18,9 @@ public class UIManager:XSingleton<UIManager>
             Debug.LogError("UIRoot为空!");
             return null;
         }
-        if (uiDic.ContainsKey(uiType))
+        if (uiDic.ContainsKey(uiType.name))
         {
-            GameObject ui = uiDic[uiType];
+            GameObject ui = uiDic[uiType.name];
             ui.SetActive(true);
             return ui;
         }
@@ -32,16 +32,16 @@ public class UIManager:XSingleton<UIManager>
             return null;
         }
         uiPrefab.name = uiType.name;
-        uiDic.Add(uiType,uiPrefab);
+        uiDic.Add(uiType.name,uiPrefab);
         return uiPrefab;
     }
 
     public void DestroyUIWindow(UIType uiType)
     {
-        if (uiDic.ContainsKey(uiType))
+        if (uiDic.ContainsKey(uiType.name))
         {
-            Destroy(uiDic[uiType]);
-            uiDic.Remove(uiType);
+            Destroy(uiDic[uiType.name]);
+            uiDic.Remove(uiType.name);
         }
     }
     
