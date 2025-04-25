@@ -20,6 +20,7 @@ public class PanelManager :XSingleton<PanelManager>
          uiStack.Push(panel);
          //创建ui，并将ui放到uidic中
          GameObject ui = uiManager.GetUIWindow(panel.uiType);
+         UITool.S.activePanel = ui;
          panel.OnEnter();
     }
     public void PopPanel()
@@ -33,5 +34,6 @@ public class PanelManager :XSingleton<PanelManager>
                    uiStack.Peek().OnResume();
               }
          }
+         UITool.S.activePanel=uiManager.GetUIWindow(uiStack.Peek().uiType);
     }
 }
