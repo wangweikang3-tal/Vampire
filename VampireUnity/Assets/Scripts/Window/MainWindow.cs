@@ -8,13 +8,14 @@ public class MainWindow : BasePanel
    {
       UITool.S.GetChildGameObject("StartGameButton").gameObject.GetComponent<Button>().onClick.AddListener(() =>
       {
-         Debug.Log("kkkkkkk");
-         PanelManager.S.PushPanel(new test());
+         Debug.Log("点击进入末世");
+         PanelManager.S.PushPanel(new GameBGWindow());
       });
    }
 
    public override void OnPause()
    {
+      Debug.Log("主界面隐藏");
      UITool.S.GetChildGameObject("GameBG").gameObject.SetActive(false);
      UITool.S.GetChildGameObject("StartGameButton").gameObject.SetActive(false);
    }
