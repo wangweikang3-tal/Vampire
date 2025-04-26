@@ -452,6 +452,7 @@ GameObject:
   - component: {fileID: 2548737486940663543}
   - component: {fileID: 1671769880108733698}
   - component: {fileID: 7955382768351366935}
+  - component: {fileID: 7226031508480126302}
   m_Layer: 5
   m_Name: RoleIdle
   m_TagString: Untagged
@@ -475,8 +476,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -415.14288, y: -146.39249}
-  m_SizeDelta: {x: 930.29, y: 821.0376}
+  m_AnchoredPosition: {x: -448.21948, y: -129.26016}
+  m_SizeDelta: {x: 620.0253, y: 812.2979}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1671769880108733698
 CanvasRenderer:
@@ -506,7 +507,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 267c661e752cf467b88d089a578b6402, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -516,6 +517,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &7226031508480126302
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3825419458473481441}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28dad7e7a1e5d4275804ed36d3f8bc13, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4167328200681650188
 GameObject:
   m_ObjectHideFlags: 0
