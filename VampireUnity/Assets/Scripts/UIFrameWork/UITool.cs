@@ -16,14 +16,38 @@ public class UITool:XSingleton<UITool>
 
    public GameObject GetChildGameObject(string uiName)
    {
-      GameObject uiRoot=GameObject.Find("UIRoot");
-      if (uiRoot==null)
+      GameObject uiRoot = GameObject.Find("UIRoot");
+      if (uiRoot == null)
       {
          Debug.LogError("没有UIRoot！");
+         return null;
       }
-      GameObject child = uiRoot.transform.Find(uiName).gameObject;
+   
+      GameObject child = FindChildRecursive(uiRoot.transform, uiName);
+      if (child == null)
+      {
+         Debug.LogError("未找到子对象：" + uiName);
+      }
       return child;
    }
+
+   private GameObject FindChildRecursive(Transform parent, string childName)
+   {
+      foreach (Transform child in parent)
+      {
+         if (child.name == childName)
+         {
+            return child.gameObject;
+         }
+         GameObject found = FindChildRecursive(child, childName);
+         if (found != null)
+         {
+            return found;
+         }
+      }
+      return null;
+   }
+
    public GameObject GetComponentInChild<T>(string uiName) where T : Component
    {
       GameObject uiRoot = GameObject.Find("UIRoot");

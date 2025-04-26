@@ -6,7 +6,7 @@ public class MainWindow : BasePanel
    public MainWindow(): base(new UIType("Prefabs/MainWindow")) { }
    public override void OnEnter()
    {
-      UITool.S.ActivePanelGetOrAddComponentInChild<Button>("Button").onClick.AddListener(() =>
+      UITool.S.GetChildGameObject("StartGameButton").gameObject.GetComponent<Button>().onClick.AddListener(() =>
       {
          Debug.Log("kkkkkkk");
          PanelManager.S.PushPanel(new test());
@@ -15,7 +15,8 @@ public class MainWindow : BasePanel
 
    public override void OnPause()
    {
-     UITool.S.GetChildGameObject("MainWindow").GetComponent<GraphicRaycaster>().enabled = false;
+     UITool.S.GetChildGameObject("GameBG").gameObject.SetActive(false);
+     UITool.S.GetChildGameObject("StartGameButton").gameObject.SetActive(false);
    }
    
    public override void OnResume()
