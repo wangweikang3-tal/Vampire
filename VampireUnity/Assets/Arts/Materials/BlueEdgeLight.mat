@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EdgeLight
+  m_Name: BlueEdgeLight
   m_Shader: {fileID: 4800000, guid: 8ddbafb8c2d8d4c4fa8616c958a8d4ee, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
