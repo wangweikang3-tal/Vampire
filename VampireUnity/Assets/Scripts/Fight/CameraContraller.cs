@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CameraContraller : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
@@ -11,6 +10,20 @@ public class CameraContraller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //摄像机跟随玩家
+        if (GameController.S.GamePlayer != null)
+        {
+            transform.position = new Vector3(GameController.S.GamePlayer.transform.position.x, GameController.S.GamePlayer.transform.position.y, -10);
+        }
+
+        if (transform.position.x < -9.5f)
+            transform.position =new Vector3(-9.5f, transform.position.y, transform.position.z);
+        if (transform.position.x > 9.5f)
+            transform.position =new Vector3(9.5f, transform.position.y, transform.position.z);
+        if(transform.position.y < -5f)
+            transform.position =new Vector3(transform.position.x, -5f, transform.position.z);
+        if(transform.position.y > 5f)
+            transform.position =new Vector3(transform.position.x, 5f, transform.position.z);
+            
     }
 }

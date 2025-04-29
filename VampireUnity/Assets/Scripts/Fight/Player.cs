@@ -18,8 +18,6 @@ public class Player : MonoBehaviour
         //获得输入
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Debug.Log("horizontal:" + horizontal);
-        Debug.Log("vertical:" + vertical);
         if(horizontal == 0&& vertical == 0)
         {
             animator.SetBool("isMove", false);
@@ -46,6 +44,17 @@ public class Player : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+        
+        //限制角色在屏幕内
+        if (transform.position.x < -15f)
+            transform.position = new Vector3(-15f, transform.position.y, transform.position.z);
+        if (transform.position.x > 15f)
+            transform.position = new Vector3(15f, transform.position.y, transform.position.z);
+        if (transform.position.y < -7.5f)
+            transform.position = new Vector3(transform.position.x, -7.5f, transform.position.z);
+        if (transform.position.y > 7.5f)
+            transform.position = new Vector3(transform.position.x, 7.5f, transform.position.z);
+            
     }
     public void SetSpeed(int speed)
     {
