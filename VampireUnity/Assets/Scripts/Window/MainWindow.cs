@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class MainWindow : BasePanel
 {
-   public MainWindow(): base(new UIType("Prefabs/MainWindow")) { }
+   public MainWindow(): base(new UIType("Prefabs/Window/MainWindow")) { }
    public override void OnEnter()
    {
       UITool.S.GetChildGameObject("StartGameButton").gameObject.GetComponent<Button>().onClick.AddListener(() =>

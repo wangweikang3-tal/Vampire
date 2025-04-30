@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class GameBGWindow : BasePanel
 {
-    public GameBGWindow() : base(new UIType("Prefabs/Gamebg")) { }
+    public GameBGWindow() : base(new UIType("Prefabs/Window/Gamebg")) { }
     
     public override void OnEnter()
     {

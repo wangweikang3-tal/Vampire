@@ -11,9 +11,9 @@ public class CameraContraller : MonoBehaviour
     void Update()
     {
         //摄像机跟随玩家
-        if (GameController.S.GamePlayer != null)
+        if (GameController.S.gamePlayer != null)
         {
-            transform.position = new Vector3(GameController.S.GamePlayer.transform.position.x, GameController.S.GamePlayer.transform.position.y, -10);
+            transform.position = new Vector3(GameController.S.gamePlayer.transform.position.x, GameController.S.gamePlayer.transform.position.y, -10);
         }
 
         if (transform.position.x < -9.5f)

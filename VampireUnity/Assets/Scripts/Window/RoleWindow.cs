@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class RoleWindow : BasePanel
 {
-    public RoleWindow(): base(new UIType("Prefabs/RoleWindow")) { }
+    public RoleWindow(): base(new UIType("Prefabs/Window/RoleWindow")) { }
 
     public override void OnEnter()
     {
