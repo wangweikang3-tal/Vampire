@@ -18,7 +18,7 @@ public class GunBase : MonoBehaviour
     public void Shot()
     {
         //实例化子弹
-        BulletBase bullet = Instantiate(Resources.Load<BulletBase>("Prefabs/Bullet/PistolBullet"),GameController.S._currentGun.transform);
+        BulletBase bullet = Instantiate(Resources.Load<BulletBase>("Prefabs/Bullet/PistolBullet"),GameController.S.gamePlayer.currentGun.transform);
         bullet.BulletMove();
     }
     

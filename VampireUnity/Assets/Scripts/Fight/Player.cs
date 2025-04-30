@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -6,13 +7,22 @@ public class Player : MonoBehaviour
     private int _playerSpeed = 3;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
-    // Update is called once per frame
+    public GunBase currentGun;
+
+    private void Awake()
+    {
+        currentGun = Instantiate(Resources.Load<GameObject>("Prefabs/Gun/Pistol").GetComponent<GunBase>(),transform);
+    }
+
     void Update()
     {
         PlayerMove();
         PlayerMoveAnimation();
+        SetGunRotate();
     }
-
+    /// <summary>
+    /// 主角动画
+    /// </summary>
     private void PlayerMoveAnimation()
     {
         //获得输入
@@ -28,6 +38,9 @@ public class Player : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// 主角移动
+    /// </summary>
     private void PlayerMove()
     {
         //获得输入
@@ -58,8 +71,24 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, 7.5f, transform.position.z);
             
     }
+    
     public void SetSpeed(int speed)
     {
         _playerSpeed = speed;
     }
+    
+    public void SetGunRotate()
+    {
+        //获取鼠标位置
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //主角朝鼠标方向
+        Vector3 direction = (mousePos - transform.position).normalized;
+        //打印direction
+        Debug.Log("direction: " + direction);
+        //设置枪的位置
+        currentGun.transform.position = transform.position + direction * 1f;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        currentGun.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
+    
 }

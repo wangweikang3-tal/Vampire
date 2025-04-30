@@ -9,7 +9,6 @@ public class GameController : XSingleton<GameController>
     public float _currentTime = 0f;
     public GameObject _fightBG;
     public Transform[] monsterBirthPoints;
-    public GunBase _currentGun;
 
     private void Awake()
     {
@@ -22,7 +21,6 @@ public class GameController : XSingleton<GameController>
         _monsterBirthPoint.transform.position = new Vector3(0, 0, 0f);
         _snotMonster = Resources.Load<GameObject>("Prefabs/Monster/SnotMonster").GetComponent<SnotMonster>();
         monsterBirthPoints=_monsterBirthPoint.GetComponentsInChildren<Transform>();
-        _currentGun = Instantiate(Resources.Load<GameObject>("Prefabs/Gun/Pistol").GetComponent<GunBase>(),gamePlayer.transform);
     }
 
     private void CreateMonster()
