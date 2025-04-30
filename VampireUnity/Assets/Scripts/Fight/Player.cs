@@ -3,7 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    private int _playerSpeed = 5;
+    private int _playerSpeed = 3;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     // Update is called once per frame
@@ -31,10 +31,12 @@ public class Player : MonoBehaviour
     private void PlayerMove()
     {
         //获得输入
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        //移动角色
-        transform.Translate(new Vector3(horizontal, vertical, 0) * Time.deltaTime * _playerSpeed);
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        //刚体移动角色
+        Vector3 direction = new Vector3(horizontal, vertical, 0);
+        //刚体移动
+        GetComponent<Rigidbody2D>().linearVelocity = direction.normalized * _playerSpeed;
         if (horizontal < 0)
         {
             //翻转Sprite

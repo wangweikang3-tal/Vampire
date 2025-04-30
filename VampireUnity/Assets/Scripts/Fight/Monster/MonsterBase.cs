@@ -21,6 +21,8 @@ public class MonsterBase : MonoBehaviour
     private int _exp;//经验值
     private int _bloodEnergy;//血能
     private int _evolutionEnergy;//源能
+    public SpriteRenderer spriteRenderer;
+
     //构造方法
     public MonsterBase(MonsterType monsterType, string monsterName, int monsterLevel, int maxHp, float speed, int attack, int defense, int exp, int bloodEnergy, int evolutionEnergy)
     {
@@ -42,5 +44,32 @@ public class MonsterBase : MonoBehaviour
         Vector3 direction = GameController.S.gamePlayer.transform.position - transform.position;
         //刚体移动
         GetComponent<Rigidbody2D>().velocity = direction.normalized * _speed; 
+    }
+    
+    public void SpriteFlipX(bool isRight)
+    {
+        //翻转精灵
+        if (isRight)
+        {
+            if (GameController.S.gamePlayer.transform.position.x > transform.position.x)
+                    {
+                        spriteRenderer.flipX = false;
+                    }
+                    else
+                    {
+                        spriteRenderer.flipX = true;
+                    }
+        }else
+        {
+            if (GameController.S.gamePlayer.transform.position.x > transform.position.x)
+                    {
+                        spriteRenderer.flipX = true;
+                    }
+                    else
+                    {
+                        spriteRenderer.flipX = false;
+                    }
+        }
+        
     }
 }
