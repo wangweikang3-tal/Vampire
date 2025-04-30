@@ -3,12 +3,13 @@ using UnityEngine;
 public class GameController : XSingleton<GameController>
 {
     public Player gamePlayer;
-    private GameObject _monsterBirthPoint;
-    private SnotMonster _snotMonster;
-    private float _monsterBirthTimeScale = 1f; //间隔一秒钟生成一个怪物
-    private float _currentTime = 0f;
-    private GameObject _fightBG;
-    private Transform[] monsterBirthPoints;
+    public GameObject _monsterBirthPoint;
+    public SnotMonster _snotMonster;
+    public float _monsterBirthTimeScale = 1f; //间隔一秒钟生成一个怪物
+    public float _currentTime = 0f;
+    public GameObject _fightBG;
+    public Transform[] monsterBirthPoints;
+    public GunBase _currentGun;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class GameController : XSingleton<GameController>
         _monsterBirthPoint.transform.position = new Vector3(0, 0, 0f);
         _snotMonster = Resources.Load<GameObject>("Prefabs/Monster/SnotMonster").GetComponent<SnotMonster>();
         monsterBirthPoints=_monsterBirthPoint.GetComponentsInChildren<Transform>();
+        _currentGun = Instantiate(Resources.Load<GameObject>("Prefabs/Gun/Pistol").GetComponent<GunBase>(),gamePlayer.transform);
     }
 
     private void CreateMonster()
