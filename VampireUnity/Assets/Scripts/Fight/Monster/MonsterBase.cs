@@ -13,7 +13,7 @@ public class MonsterBase : MonoBehaviour
     private MonsterType _monsterType;//怪物类型
     private string _monsterName;//怪物名称
     private int _monsterLevel;//怪物等级
-    private int c_urrentHp;//当前血量
+    private int _currentHp;//当前血量
     private int _maxHp;//最大血量
     private float _speed;//速度
     private int _attack;//攻击力
@@ -71,5 +71,20 @@ public class MonsterBase : MonoBehaviour
                     }
         }
         
+    }
+
+    public void Hurt(int damage)
+    {
+        _currentHp -= damage;
+        Debug.Log("mmmmmm");
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            BulletBase bullet = other.gameObject.GetComponent<BulletBase>();
+            Hurt(bullet.damage);
+        }
     }
 }

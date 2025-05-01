@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class BulletBase : MonoBehaviour
 {
-    private float _speed;
-    private int _damage;
+    public float speed;
+    public int damage;
     //构造函数
     public BulletBase(float speed, int damage)
     {
-        this._speed = speed;
-        this._damage = damage;
+        this.speed = speed;
+        this.damage = damage;
     }
     public void BulletMove()
     {
         //朝当前方向右边移动
-        transform.Translate(Vector3.up * _speed * Time.deltaTime);
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 
     private void Update()
