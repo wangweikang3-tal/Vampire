@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
+
 //怪物类型枚举
 public enum MonsterType
 {
@@ -23,6 +25,7 @@ public class MonsterBase : MonoBehaviour
     private int _evolutionEnergy;//源能
     public SpriteRenderer monsterSpriteRenderer;
     public Animator monsterAnimator;
+    public GameObject monsterHurtText;
 
     //构造方法
     public MonsterBase(MonsterType monsterType, string monsterName, int monsterLevel, int maxHp, float speed, int attack, int defense, int exp, int bloodEnergy, int evolutionEnergy)
@@ -39,6 +42,10 @@ public class MonsterBase : MonoBehaviour
         this._evolutionEnergy = evolutionEnergy;
     }
 
+    private void Awake()
+    {
+        monsterHurtText=Resources.Load<GameObject>("Prefabs/Tool/MonsterHurtText");
+    }
     public void MonsterMove()
     {
         //朝着主角以speed的速度前进
@@ -82,6 +89,13 @@ public class MonsterBase : MonoBehaviour
 
     public void Hurt(int damage)
     {
+        GameObject monsterHpGameObject=Instantiate(monsterHurtText, transform);
+        //在monsterHpGameObject子类中查找Canvas的紫累HPText
+        Text monsterHpText = monsterHpGameObject.transform.Find("Canvas/HPText").GetComponent<Text>();
+        //设置monsterHpText的text为-damage
+        monsterHpText.text = "-" + damage.ToString();
+        //设置monsterHpGameObject的position为怪物位置
+        monsterHpGameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
         //设置monsterAnimator的ishuru为true
         monsterAnimator.SetBool("isHurt", true);
         //重新播放Hurt动画
