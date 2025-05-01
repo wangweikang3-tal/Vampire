@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 1879184392301205559}
+  gunSpriteRender: {fileID: 5132989647945245443}
   flag: 0
 --- !u!1001 &7928581017300894508
 PrefabInstance:

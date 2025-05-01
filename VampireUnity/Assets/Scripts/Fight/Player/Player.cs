@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public GunBase currentGun;
-    private float _gunDistance = 0.5f;
+    private float _gunDistance = 0.3f;
 
     private void Awake()
     {
@@ -81,6 +81,15 @@ public class Player : MonoBehaviour
         //设置枪的位置
         currentGun.transform.position = transform.position + direction * _gunDistance;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //如果角度在90-270之间
+        if (angle > 90 || angle <-90)
+        {
+           currentGun.gunSpriteRender.flipY = true;
+        }
+        else
+        {
+            currentGun.gunSpriteRender.flipY = false;
+        }
         currentGun.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
     

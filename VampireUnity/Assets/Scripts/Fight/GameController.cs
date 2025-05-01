@@ -55,6 +55,9 @@ public class GameController : XSingleton<GameController>
             currentTime = 0f;
         }
         //获得距离最近的怪物位置
+        monsterDetetor1 = SortMonsterDistance(monsterDetetor1);
+        monsterDetetor2 = SortMonsterDistance(monsterDetetor2);
+        monsterDetetor3 = SortMonsterDistance(monsterDetetor3);
         if (monsterDetetor1.Count > 0)
         {
             nearMonsterPosition = monsterDetetor1[0].transform.position;
@@ -69,14 +72,29 @@ public class GameController : XSingleton<GameController>
         }
         else
         {
-            nearMonsterPosition = Vector3.right;
+           //朝向player的右边
+           if(gamePlayer.spriteRenderer.flipX)
+               nearMonsterPosition = gamePlayer.transform.position + new Vector3(-1, 0, 0);
+           else
+              nearMonsterPosition = gamePlayer.transform.position + new Vector3(1, 0, 0);
         }
-        
         
         //主角操作
         gamePlayer.PlayerMove();
         gamePlayer.PlayerMoveAnimation();
         gamePlayer.SetGunRotate(nearMonsterPosition);
         gamePlayer.currentGun.Shot();
+    }
+
+    private List<MonsterBase> SortMonsterDistance(List<MonsterBase> monsters)
+    {
+        //按monsters距离player的距离排序，越小越在前面
+        monsters.Sort((a, b) =>
+        {
+            float distanceA = Vector3.Distance(gamePlayer.transform.position, a.transform.position);
+            float distanceB = Vector3.Distance(gamePlayer.transform.position, b.transform.position);
+            return distanceA.CompareTo(distanceB);
+        });
+        return monsters;
     }
 }
