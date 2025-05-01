@@ -83,7 +83,11 @@ public class GameController : XSingleton<GameController>
         gamePlayer.PlayerMove();
         gamePlayer.PlayerMoveAnimation();
         gamePlayer.SetGunRotate(nearMonsterPosition);
-        gamePlayer.currentGun.Shot();
+        //按空格键射击
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gamePlayer.currentGun.Shot();
+        }
     }
 
     private List<MonsterBase> SortMonsterDistance(List<MonsterBase> monsters)

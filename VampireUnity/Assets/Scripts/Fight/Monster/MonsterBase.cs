@@ -21,7 +21,8 @@ public class MonsterBase : MonoBehaviour
     private int _exp;//经验值
     private int _bloodEnergy;//血能
     private int _evolutionEnergy;//源能
-    public SpriteRenderer spriteRenderer;
+    public SpriteRenderer monsterSpriteRenderer;
+    public Animator monsterAnimator;
 
     //构造方法
     public MonsterBase(MonsterType monsterType, string monsterName, int monsterLevel, int maxHp, float speed, int attack, int defense, int exp, int bloodEnergy, int evolutionEnergy)
@@ -53,30 +54,39 @@ public class MonsterBase : MonoBehaviour
         {
             if (GameController.S.gamePlayer.transform.position.x > transform.position.x)
                     {
-                        spriteRenderer.flipX = false;
+                        monsterSpriteRenderer.flipX = false;
                     }
                     else
                     {
-                        spriteRenderer.flipX = true;
+                        monsterSpriteRenderer.flipX = true;
                     }
         }else
         {
             if (GameController.S.gamePlayer.transform.position.x > transform.position.x)
                     {
-                        spriteRenderer.flipX = true;
+                        monsterSpriteRenderer.flipX = true;
                     }
                     else
                     {
-                        spriteRenderer.flipX = false;
+                        monsterSpriteRenderer.flipX = false;
                     }
         }
         
     }
 
+    //动画事件，设置isHurt
+    public void SetIsHurt()
+    {
+        monsterAnimator.SetBool("isHurt", false);
+    }
+
     public void Hurt(int damage)
     {
+        //设置monsterAnimator的ishuru为true
+        monsterAnimator.SetBool("isHurt", true);
+        //重新播放Hurt动画
+        monsterAnimator.Play("SnotMonsterHit");
         _currentHp -= damage;
-        Debug.Log("mmmmmm");
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -85,6 +95,8 @@ public class MonsterBase : MonoBehaviour
         {
             BulletBase bullet = other.gameObject.GetComponent<BulletBase>();
             Hurt(bullet.damage);
+            //销毁子弹
+            Destroy(other.gameObject);
         }
     }
 }
