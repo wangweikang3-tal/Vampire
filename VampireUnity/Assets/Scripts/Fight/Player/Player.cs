@@ -10,16 +10,11 @@ public class Player : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public GunBase currentGun;
     private float _gunDistance = 0.5f;
-    private Queue<MonsterBase> _monsterDetetor1 ;
-    private Queue<MonsterBase> _monsterDetetor2 ;
-    private Queue<MonsterBase> _monsterDetetor3 ;
 
     private void Awake()
     {
         currentGun = Instantiate(Resources.Load<GameObject>("Prefabs/Gun/Pistol").GetComponent<GunBase>(),transform);
-        _monsterDetetor1 = new Queue<MonsterBase>();
-        _monsterDetetor2 = new Queue<MonsterBase>();
-        _monsterDetetor3 = new Queue<MonsterBase>();
+        
     }
     
     /// <summary>
@@ -79,12 +74,10 @@ public class Player : MonoBehaviour
         _playerSpeed = speed;
     }
     
-    public void SetGunRotate(Vector3 targetPosition)
+    public void SetGunRotate(Vector3 nearMonsterPosition)
     {
-        //获取鼠标位置
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //主角朝鼠标方向
-        Vector3 direction = (mousePos - transform.position).normalized;
+        //主角朝最近怪物的方向
+        Vector3 direction = (nearMonsterPosition - transform.position).normalized;
         //设置枪的位置
         currentGun.transform.position = transform.position + direction * _gunDistance;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
