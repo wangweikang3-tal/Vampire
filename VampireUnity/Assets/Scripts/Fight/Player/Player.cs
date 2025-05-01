@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,22 +9,23 @@ public class Player : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public GunBase currentGun;
+    private float _gunDistance = 0.5f;
+    private Queue<MonsterBase> _monsterDetetor1 ;
+    private Queue<MonsterBase> _monsterDetetor2 ;
+    private Queue<MonsterBase> _monsterDetetor3 ;
 
     private void Awake()
     {
         currentGun = Instantiate(Resources.Load<GameObject>("Prefabs/Gun/Pistol").GetComponent<GunBase>(),transform);
+        _monsterDetetor1 = new Queue<MonsterBase>();
+        _monsterDetetor2 = new Queue<MonsterBase>();
+        _monsterDetetor3 = new Queue<MonsterBase>();
     }
-
-    void Update()
-    {
-        PlayerMove();
-        PlayerMoveAnimation();
-        SetGunRotate();
-    }
+    
     /// <summary>
     /// 主角动画
     /// </summary>
-    private void PlayerMoveAnimation()
+    public void PlayerMoveAnimation()
     {
         //获得输入
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -41,7 +43,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// 主角移动
     /// </summary>
-    private void PlayerMove()
+    public void PlayerMove()
     {
         //获得输入
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -77,16 +79,14 @@ public class Player : MonoBehaviour
         _playerSpeed = speed;
     }
     
-    public void SetGunRotate()
+    public void SetGunRotate(Vector3 targetPosition)
     {
         //获取鼠标位置
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //主角朝鼠标方向
         Vector3 direction = (mousePos - transform.position).normalized;
-        //打印direction
-        Debug.Log("direction: " + direction);
         //设置枪的位置
-        currentGun.transform.position = transform.position + direction * 1f;
+        currentGun.transform.position = transform.position + direction * _gunDistance;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         currentGun.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }

@@ -9,6 +9,6 @@ public class Pistol : GunBase
 
    private void Update()
    {
-       Shot();
+       //Shot();
    }
 }

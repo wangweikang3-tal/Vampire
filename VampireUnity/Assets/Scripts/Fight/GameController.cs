@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameController : XSingleton<GameController>
@@ -36,12 +37,18 @@ public class GameController : XSingleton<GameController>
 
     private void Update()
     {
+        //生成怪物
         _currentTime += Time.deltaTime;
-
         if (_currentTime >= _monsterBirthTimeScale)
         {
             CreateMonster();
             _currentTime = 0f;
         }
+        
+        //主角操作
+        gamePlayer.PlayerMove();
+        gamePlayer.PlayerMoveAnimation();
+        gamePlayer.SetGunRotate(new Vector3(0,0,0));
+        gamePlayer.currentGun.Shot();
     }
 }
