@@ -3,8 +3,8 @@ guid: 75e1329a872bc4ab19528acc340a6722
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8337269579300162638
-    second: "jimeng-2025-05-02-637-\u9EC4\u8272\uFF0C\u6E38\u620Fui\u573A\u666F\u80CC\u666F\u56FE,\u692D\u5706\u5F62_0"
+      213: -8252489712951322657
+    second: RoleInfoFightBG_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "jimeng-2025-05-02-637-\u9EC4\u8272\uFF0C\u6E38\u620Fui\u573A\u666F\u80CC\u666F\u56FE,\u692D\u5706\u5F62_0"
+      name: RoleInfoFightBG_0
       rect:
         serializedVersion: 2
-        x: 228
-        y: 90
-        width: 872
-        height: 1148
+        x: 0
+        y: 0
+        width: 356
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4c4bd6728ee3b370800000000000000
-      internalID: 8337269579300162638
+      spriteID: fd798f26454497d80800000000000000
+      internalID: -8252489712951322657
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      "jimeng-2025-05-02-637-\u9EC4\u8272\uFF0C\u6E38\u620Fui\u573A\u666F\u80CC\u666F\u56FE,\u692D\u5706\u5F62_0": 8337269579300162638
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
