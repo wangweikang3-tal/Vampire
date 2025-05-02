@@ -36,6 +36,8 @@ public class GameController : XSingleton<GameController>
         monsterDetetor2 = new List<MonsterBase>();
         monsterDetetor3 = new List<MonsterBase>();
         monsterHpSliderPrefabs=Resources.Load<GameObject>("Prefabs/Tool/MonsterHPBloodBar");
+        //实例化UI
+        Instantiate(Resources.Load<GameObject>("Prefabs/UI/RoleInfoFight"), transform);
     }
 
     private void CreateMonster()
