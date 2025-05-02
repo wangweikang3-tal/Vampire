@@ -95,7 +95,7 @@ public class MonsterBase : MonoBehaviour
         //设置monsterHpText的text为-damage
         monsterHpText.text = "-" + damage.ToString();
         //设置monsterHpGameObject的position为怪物位置
-        monsterHpGameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
+        monsterHpGameObject.transform.position = new Vector3(transform.position.x+0.1f, transform.position.y + 0.2f, transform.position.z);
         //设置monsterAnimator的ishuru为true
         monsterAnimator.SetBool("isHurt", true);
         //重新播放Hurt动画
