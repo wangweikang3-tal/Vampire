@@ -96,6 +96,10 @@ public class MonsterBase : MonoBehaviour
 
     public void Die()
     {
+        //生成血能
+        GameObject bloodEnergy = Instantiate(Resources.Load<GameObject>("Prefabs/Prop/BloodEnergy"));
+        //设置血能位置为怪物位置
+        bloodEnergy.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         IsDead = true;
         // 从所有探测器列表中移除自己
         // 立即从所有探测器列表中移除自己

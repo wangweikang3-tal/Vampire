@@ -1,6 +1,6 @@
 // Made with Amplify Shader Editor v1.9.1.5
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "BloodEnergy"
+Shader "Gleam"
 {
 	Properties
 	{
@@ -15,13 +15,13 @@ Shader "BloodEnergy"
 	{
 		
 		
-		Tags { "RenderType"="Opaque" }
+		Tags { "RenderType"="Transparent" "Queue"="Transparent" }
 	LOD 100
 
 		CGINCLUDE
 		#pragma target 3.0
 		ENDCG
-		Blend One One
+		Blend SrcAlpha OneMinusSrcAlpha
 		AlphaToMask Off
 		Cull Back
 		ColorMask RGBA
@@ -113,9 +113,11 @@ Shader "BloodEnergy"
 				float3 WorldPosition = i.worldPos;
 				#endif
 				float2 uv_TextureSample1 = i.ase_texcoord1.xy * _TextureSample1_ST.xy + _TextureSample1_ST.zw;
+				float4 tex2DNode2 = tex2D( _TextureSample1, uv_TextureSample1 );
+				float4 appendResult14 = (float4((( tex2DNode2 * ( _Color0 * (0.0 + (sin( ( _Time.y * _speed ) ) - -1.0) * (1.0 - 0.0) / (1.0 - -1.0)) ) )).rgb , tex2DNode2.r));
 				
 				
-				finalColor = ( tex2D( _TextureSample1, uv_TextureSample1 ) * ( _Color0 * (0.0 + (sin( ( _Time.y * _speed ) ) - -1.0) * (1.0 - 0.0) / (1.0 - -1.0)) ) );
+				finalColor = appendResult14;
 				return finalColor;
 			}
 			ENDCG
@@ -127,7 +129,7 @@ Shader "BloodEnergy"
 }
 /*ASEBEGIN
 Version=19105
-Node;AmplifyShaderEditor.SamplerNode;2;-1065.429,-1.842986;Inherit;True;Property;_TextureSample1;Texture Sample 1;0;0;Create;True;0;0;0;False;0;False;-1;a88ec207170d0c049b83499478d3354e;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SamplerNode;2;-1065.429,-1.842986;Inherit;True;Property;_TextureSample1;Texture Sample 1;0;0;Create;True;0;0;0;False;0;False;-1;a88ec207170d0c049b83499478d3354e;a88ec207170d0c049b83499478d3354e;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ColorNode;5;-1044.887,250.0517;Inherit;False;Property;_Color0;Color 0;1;1;[HDR];Create;True;0;0;0;False;0;False;3.441591,0,0.1081126,0;1,0.1503219,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;8;-571.369,331.1338;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TFHCRemapNode;7;-802.7234,443.5674;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;-1;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
@@ -135,16 +137,21 @@ Node;AmplifyShaderEditor.RangedFloatNode;12;-1405.895,588.28;Inherit;False;Prope
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;11;-1144.895,516.28;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleTimeNode;10;-1409.895,430.28;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SinOpNode;9;-1009.895,525.28;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;4;-436.9936,102.7398;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;201.0873,177.8346;Float;False;True;-1;2;ASEMaterialInspector;100;5;BloodEnergy;0770190933193b94aaa3065e307002fa;True;Unlit;0;0;Unlit;2;True;True;4;1;False;;1;False;;0;1;False;;0;False;;True;0;False;;0;False;;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;RenderType=Opaque=RenderType;True;2;False;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;0;;0;0;Standard;1;Vertex Position,InvertActionOnDeselection;1;0;0;1;True;False;;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;201.0873,177.8346;Float;False;True;-1;2;ASEMaterialInspector;100;5;Gleam;0770190933193b94aaa3065e307002fa;True;Unlit;0;0;Unlit;2;True;True;2;5;False;;10;False;;0;1;False;;0;False;;True;0;False;;0;False;;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;True;True;0;False;;True;3;False;;True;True;0;False;;0;False;;True;2;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;2;False;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;0;;0;0;Standard;1;Vertex Position,InvertActionOnDeselection;1;0;0;1;True;False;;False;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;4;-578.9936,90.7398;Inherit;True;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.ComponentMaskNode;13;-230.276,167.0937;Inherit;False;True;True;True;False;1;0;COLOR;0,0,0,0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.DynamicAppendNode;14;9.723999,149.0937;Inherit;True;FLOAT4;4;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT4;0
 WireConnection;8;0;5;0
 WireConnection;8;1;7;0
 WireConnection;7;0;9;0
 WireConnection;11;0;10;0
 WireConnection;11;1;12;0
 WireConnection;9;0;11;0
+WireConnection;0;0;14;0
 WireConnection;4;0;2;0
 WireConnection;4;1;8;0
-WireConnection;0;0;4;0
+WireConnection;13;0;4;0
+WireConnection;14;0;13;0
+WireConnection;14;3;2;1
 ASEEND*/
-//CHKSM=0893ABBF2628230D9DDD592F7E7D8D78B60CC0EC
+//CHKSM=F8FBA52D6024C64CD99B778B21BC9A8499CF4DAD

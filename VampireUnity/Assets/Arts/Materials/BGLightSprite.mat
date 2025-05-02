@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gleam
-  m_Shader: {fileID: 4800000, guid: d3f9f19b6ffd94e73b5778d5fca3ca7c, type: 3}
+  m_Name: BGLightSprite
+  m_Shader: {fileID: 4800000, guid: eec7016332c1f4a44bd7c4fa375f8703, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1f2768c6c8a084fb584d4eca86258aad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -59,8 +59,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _TextureSample1:
-        m_Texture: {fileID: 2800000, guid: d8ba7333cef7de143bc410c561e0ff24, type: 3}
+    - _TextureSample0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _addtex:
+        m_Texture: {fileID: 2800000, guid: 33ac78a97bfd14c9caffc2e125c28380, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _back:
+        m_Texture: {fileID: 2800000, guid: 1ffba5434824f4a1db4a27621f6c847a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _noise:
+        m_Texture: {fileID: 2800000, guid: 0c8bc51d86c687d40b903749535bfb90, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _noisetex:
+        m_Texture: {fileID: 2800000, guid: 0c8bc51d86c687d40b903749535bfb90, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -85,10 +101,13 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _speed: 10
+    - _lerp: 0.2352941
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 40.331898, g: 0, b: 1.2669683, a: 0}
+    - _Color0: {r: 5.992157, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _back_speed: {r: 2, g: 2, b: 0.2, a: 0.2}
+    - _noise_speed: {r: 1, g: 1, b: 0.2, a: 0.2}
+    - _speed: {r: 0.3, g: 0.3, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
