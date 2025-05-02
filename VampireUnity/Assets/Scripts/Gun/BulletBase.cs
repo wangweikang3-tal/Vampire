@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class BulletBase : MonoBehaviour
 {
-    public float speed;
+    //不能序列化speed和damage
+    [NonSerialized]
+    private float speed;
+    [NonSerialized]
     public int damage;
     //构造函数
     public BulletBase(float speed, int damage)

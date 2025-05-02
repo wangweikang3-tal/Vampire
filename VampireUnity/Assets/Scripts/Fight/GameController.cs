@@ -46,9 +46,13 @@ public class GameController : XSingleton<GameController>
         Transform randomPoint = monsterBirthPoints[randomIndex];
         //生成怪物
         GameObject monster = Instantiate(snotMonster.gameObject, randomPoint.position, Quaternion.identity);
+        MonsterBase monsterBase = monster.GetComponent<MonsterBase>();
+        monsterBase.CurrentHp=monsterBase.MaxHp;
         monster.transform.SetParent(monsterBirthPoints[randomIndex]);
         //生成怪物血条
         GameObject monsterHpBar = Instantiate(monsterHpSliderPrefabs.gameObject, monster.transform);
+        Slider monsterHpSlider = monsterHpBar.transform.Find("Canvas/MonsterHPSlider").GetComponent<Slider>();
+        monsterBase.hpSlider = monsterHpSlider;
         monsterHpBar.transform.position = new Vector3(monsterHpBar.transform.position.x, monsterHpBar.transform.position.y + 0.2f, monsterHpBar.transform.position.z-0.1f);
 
     }
