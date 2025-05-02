@@ -20,6 +20,10 @@ public class GameController : XSingleton<GameController>
     public Vector3 nearMonsterPosition;
     //怪物血条
     public GameObject monsterHpSliderPrefabs;
+    //战斗时间文本
+    public float fightTime;//秒为单位
+    public GameObject fightTimeTextPrefab;
+    public Text fightTimeText;
 
     private void Awake()
     {
@@ -38,6 +42,9 @@ public class GameController : XSingleton<GameController>
         monsterHpSliderPrefabs=Resources.Load<GameObject>("Prefabs/Tool/MonsterHPBloodBar");
         //实例化UI
         Instantiate(Resources.Load<GameObject>("Prefabs/UI/RoleInfoFight"), transform);
+        fightTimeTextPrefab=Instantiate(Resources.Load<GameObject>("Prefabs/UI/FightTime"), transform);
+        fightTimeText=fightTimeTextPrefab.transform.Find("Canvas/FightTimeText").GetComponent<Text>();
+
     }
 
     private void CreateMonster()
@@ -61,6 +68,12 @@ public class GameController : XSingleton<GameController>
 
     private void Update()
     {
+        //更新战斗时间,以秒为单位
+        fightTime += Time.deltaTime;
+        var minute=(int)fightTime/60;
+        var second=(int)fightTime%60;
+        fightTimeText.text = "战斗时间：" + minute.ToString("F0") + " 分 " + second.ToString("F0") + " 秒";
+        
         //生成怪物
         currentTime += Time.deltaTime;
         if (currentTime >= monsterBirthTimeScale)
