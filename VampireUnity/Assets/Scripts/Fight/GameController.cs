@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : XSingleton<GameController>
 {
@@ -17,6 +18,8 @@ public class GameController : XSingleton<GameController>
     public List<MonsterBase> monsterDetetor3 ;
     //最近怪物位置
     public Vector3 nearMonsterPosition;
+    //怪物血条
+    public GameObject monsterHpSliderPrefabs;
 
     private void Awake()
     {
@@ -32,6 +35,7 @@ public class GameController : XSingleton<GameController>
         monsterDetetor1 = new List<MonsterBase>();
         monsterDetetor2 = new List<MonsterBase>();
         monsterDetetor3 = new List<MonsterBase>();
+        monsterHpSliderPrefabs=Resources.Load<GameObject>("Prefabs/Tool/MonsterHPBloodBar");
     }
 
     private void CreateMonster()
@@ -43,6 +47,10 @@ public class GameController : XSingleton<GameController>
         //生成怪物
         GameObject monster = Instantiate(snotMonster.gameObject, randomPoint.position, Quaternion.identity);
         monster.transform.SetParent(monsterBirthPoints[randomIndex]);
+        //生成怪物血条
+        GameObject monsterHpBar = Instantiate(monsterHpSliderPrefabs.gameObject, monster.transform);
+        monsterHpBar.transform.position = new Vector3(monsterHpBar.transform.position.x, monsterHpBar.transform.position.y + 0.2f, monsterHpBar.transform.position.z-0.1f);
+
     }
 
     private void Update()
