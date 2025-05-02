@@ -67,6 +67,10 @@ public class GameController : XSingleton<GameController>
             currentTime = 0f;
         }
         //获得距离最近的怪物位置
+        // 在排序之前清理无效的怪物引用
+        monsterDetetor1.RemoveAll(monster => monster == null);
+        monsterDetetor2.RemoveAll(monster => monster == null);
+        monsterDetetor3.RemoveAll(monster => monster == null);
         monsterDetetor1 = SortMonsterDistance(monsterDetetor1);
         monsterDetetor2 = SortMonsterDistance(monsterDetetor2);
         monsterDetetor3 = SortMonsterDistance(monsterDetetor3);
@@ -104,6 +108,9 @@ public class GameController : XSingleton<GameController>
 
     private List<MonsterBase> SortMonsterDistance(List<MonsterBase> monsters)
     {
+        // 首先移除所有已经被销毁的怪物
+        monsters.RemoveAll(monster => monster == null);
+
         //按monsters距离player的距离排序，越小越在前面
         monsters.Sort((a, b) =>
         {

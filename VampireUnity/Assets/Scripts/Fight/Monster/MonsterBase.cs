@@ -23,6 +23,7 @@ public class MonsterBase : MonoBehaviour
     [NonSerialized]public int Exp;//经验值
     [NonSerialized]public int BloodEnergy;//血能
     [NonSerialized]public int EvolutionEnergy;//源能
+    [NonSerialized]public bool IsDead=false;//是否死亡
     public SpriteRenderer monsterSpriteRenderer;
     public Animator monsterAnimator;
     public GameObject monsterHurtText;
@@ -87,6 +88,34 @@ public class MonsterBase : MonoBehaviour
     {
         monsterAnimator.SetBool("isHurt", false);
     }
+    //动画事件，销毁怪物
+    public void DestroyMonster()
+    {
+        Destroy(this.gameObject);
+    }
+
+    public void Die()
+    {
+        IsDead = true;
+        // 从所有探测器列表中移除自己
+        // 立即从所有探测器列表中移除自己
+        if (GameController.S != null)
+        {
+            GameController.S.monsterDetetor1.RemoveAll(m => m == this);
+            GameController.S.monsterDetetor2.RemoveAll(m => m == this);
+            GameController.S.monsterDetetor3.RemoveAll(m => m == this);
+        }
+        // 禁用碰撞器，防止继续触发碰撞
+        if(GetComponent<Collider2D>() != null)
+            GetComponent<Collider2D>().enabled = false;
+        
+        // 禁用移动
+        if(GetComponent<Rigidbody2D>() != null)
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        monsterAnimator.SetBool("isDead", true);
+        //播放死亡动画
+        monsterAnimator.Play("SnotMonsterDead");
+    }
 
     public void Hurt(int damage)
     {
@@ -104,8 +133,8 @@ public class MonsterBase : MonoBehaviour
         CurrentHp -= damage;
         //设置血条
         hpSlider.value = (float)CurrentHp / MaxHp;
-        //打印当前血量和最大血量
-        Debug.Log("当前血量：" + CurrentHp + "，最大血量：" + MaxHp);
+        if(CurrentHp<=0)
+            Die();
     }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -8,8 +8,11 @@ public class SnotMonster : MonsterBase
     // Update is called once per frame
     void Update()
     {
-        MonsterMove();
-        SpriteFlipX(false);
+        if (!IsDead)
+        {
+            MonsterMove();
+            SpriteFlipX(false);
+        }
     }
     
 }
