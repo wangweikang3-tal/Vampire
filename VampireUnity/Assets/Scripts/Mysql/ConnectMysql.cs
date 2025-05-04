@@ -1,10 +1,12 @@
+using System.Collections.Generic;
 using MySqlConnector;
 using UnityEngine;
 
-public class ConnectMysql : MonoBehaviour
+public class ConnectMysql : XSingleton<ConnectMysql>
 {
-    private string connectionString;
-    private MySqlConnection connection;
+    private string _connectionString;
+    private MySqlConnection _connection;
+    public List<User> Users;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,16 +17,17 @@ public class ConnectMysql : MonoBehaviour
         string user = "root";
         string password = "BaiChen123456+";
 
-        connectionString = $"server={server};database={database};uid={user};pwd={password};";
+        _connectionString = $"server={server};database={database};uid={user};pwd={password};";
         ConnectToDatabase();
+        GetUserTable();
     }
 
     void ConnectToDatabase()
     {
-        connection = new MySqlConnection(connectionString);
+        _connection = new MySqlConnection(_connectionString);
         try
         {
-            connection.Open();
+            _connection.Open();
             Debug.Log("Connected to MySQL database");
             // 在这里执行数据库操作，如查询、插入等
             QueryDatabase();
@@ -35,10 +38,40 @@ public class ConnectMysql : MonoBehaviour
         }
     }
     
+    //将User表中的数据存储全部到Users中
+    void GetUserTable()
+    {
+        string query = "SELECT * FROM user";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        MySqlDataReader reader = command.ExecuteReader();
+        Users = new List<User>();
+        try
+        {
+            while (reader.Read())
+            {
+                User user = new User
+                {
+                    UserId = reader.GetInt32("userid"),
+                    Username = reader.GetString("username"),
+                    Password = reader.GetString("passward")
+                };
+                Users.Add(user);
+            }
+        }
+        catch (MySqlException ex)
+        {
+            Debug.LogError("Error querying database: " + ex.Message);
+        }
+        finally
+        {
+            reader.Close();
+        }
+    }
+    
     void QueryDatabase()
     {
         string query = "SELECT * FROM user";
-        MySqlCommand command = new MySqlCommand(query, connection);
+        MySqlCommand command = new MySqlCommand(query, _connection);
         MySqlDataReader reader = command.ExecuteReader();
 
         try
@@ -65,9 +98,9 @@ public class ConnectMysql : MonoBehaviour
     // Update is called once per frame
     void OnDestroy()
     {
-        if (connection != null && connection.State == System.Data.ConnectionState.Open)
+        if (_connection != null && _connection.State == System.Data.ConnectionState.Open)
         {
-            connection.Close();
+            _connection.Close();
         }
     }
 }
