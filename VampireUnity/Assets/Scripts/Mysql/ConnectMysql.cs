@@ -27,10 +27,39 @@ public class ConnectMysql : MonoBehaviour
             connection.Open();
             Debug.Log("Connected to MySQL database");
             // 在这里执行数据库操作，如查询、插入等
+            QueryDatabase();
         }
         catch (MySqlException ex)
         {
             Debug.LogError("Error connecting to MySQL database: " + ex.Message);
+        }
+    }
+    
+    void QueryDatabase()
+    {
+        string query = "SELECT * FROM user";
+        MySqlCommand command = new MySqlCommand(query, connection);
+        MySqlDataReader reader = command.ExecuteReader();
+
+        try
+        {
+            while (reader.Read())
+            {
+                // 假设 user 表有 id、username、email 三个字段
+                int id = reader.GetInt32("userid");
+                string username = reader.GetString("username");
+                string email = reader.GetString("passward");
+
+                Debug.Log($"ID: {id}, Username: {username}, Email: {email}");
+            }
+        }
+        catch (MySqlException ex)
+        {
+            Debug.LogError("Error querying database: " + ex.Message);
+        }
+        finally
+        {
+            reader.Close();
         }
     }
     // Update is called once per frame
