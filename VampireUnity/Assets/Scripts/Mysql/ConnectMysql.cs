@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using MySqlConnector;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class ConnectMysql : XSingleton<ConnectMysql>
     private string _connectionString;
     private MySqlConnection _connection;
     public List<User> Users;
+    public int maxUserid;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,6 +22,7 @@ public class ConnectMysql : XSingleton<ConnectMysql>
         _connectionString = $"server={server};database={database};uid={user};pwd={password};";
         ConnectToDatabase();
         GetUserTable();
+        GetMaxUserId();
     }
 
     void ConnectToDatabase()
@@ -35,6 +38,40 @@ public class ConnectMysql : XSingleton<ConnectMysql>
         catch (MySqlException ex)
         {
             Debug.LogError("Error connecting to MySQL database: " + ex.Message);
+        }
+    }
+    
+    //向User表中插入数据
+    public void InsertUser(string username, string password)
+    {
+        string query = "INSERT INTO user (userid, username, passward) VALUES (@userid, @username, @passward)";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        command.Parameters.AddWithValue("@userid", maxUserid + 1);
+        command.Parameters.AddWithValue("@username", username);
+        command.Parameters.AddWithValue("@passward", password);
+
+        try
+        {
+            command.ExecuteNonQuery();
+            Debug.Log("User inserted successfully");
+            GetMaxUserId();
+            GetUserTable();
+        }
+        catch (MySqlException ex)
+        {
+            Debug.LogError("Error inserting user: " + ex.Message);
+        }
+    }
+    
+    //获取User表中最大的userid
+    void GetMaxUserId()
+    {
+        string query = "SELECT MAX(userid) FROM user";
+        MySqlCommand command = new MySqlCommand(query, _connection);
+        object result = command.ExecuteScalar();
+        if (result != null && result != DBNull.Value)
+        {
+            maxUserid = Convert.ToInt32(result);
         }
     }
     

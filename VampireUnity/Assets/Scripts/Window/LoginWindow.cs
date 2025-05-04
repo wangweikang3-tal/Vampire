@@ -17,6 +17,20 @@ public class LoginWindow : BasePanel
     public override void OnEnter()
     {
         Debug.Log("LoginWindow OnEnter");
+        UITool.S.GetChildGameObject("LoginExitButton").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
+        {
+            UITool.S.GetChildGameObject("LoginWindow").SetActive(false);
+        });
+        UITool.S.GetChildGameObject("RegisterButton").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
+        {
+            GetInputField();
+            ConnectMysql.S.InsertUser(_usernameInputField.text,_passwordInputField.text);
+            Debug.Log("注册成功");
+            UITool.S.GetChildGameObject("LoginWindow").SetActive(false);
+
+        });
+            
+        
         UITool.S.GetChildGameObject("LoginButton").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
         {
             Debug.Log("点击登陆按钮");
