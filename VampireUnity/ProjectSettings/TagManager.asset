@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Monster
   - Bullet
+  - Prop
+  - Equip
+  - PickUp
   layers:
   - Default
   - TransparentFX
