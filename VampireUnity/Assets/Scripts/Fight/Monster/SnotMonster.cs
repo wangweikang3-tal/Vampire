@@ -11,7 +11,7 @@ public class SnotMonster : MonsterBase
     private void Start()
     {
         MonsterEquipList = new List<MonsterEquip>();
-        MonsterEquipList.Add(new MonsterEquip("PrimaryClothFight", 100));
+        AddMonsterEquip();
     }
 
     // Update is called once per frame
@@ -23,5 +23,9 @@ public class SnotMonster : MonsterBase
             SpriteFlipX(false);
         }
     }
-    
+
+    public override void AddMonsterEquip()
+    {
+        MonsterEquipList.Add(new MonsterEquip("PrimaryClothFight", 100));
+    }
 }

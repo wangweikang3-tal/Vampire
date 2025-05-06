@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Equip;
 using UnityEngine;
@@ -12,7 +13,7 @@ public enum MonsterType
     Elite = 2,
     Boss = 3,
 }
-public class MonsterBase : MonoBehaviour
+public abstract class MonsterBase : MonoBehaviour
 {
     [NonSerialized]public MonsterType MonsterType;//怪物类型
     [NonSerialized]public string MonsterName;//怪物名称
@@ -145,6 +146,7 @@ public class MonsterBase : MonoBehaviour
         if(CurrentHp<=0)
             Die();
     }
+     public abstract void AddMonsterEquip();
 
     private void CreateEquip()
     {
@@ -162,6 +164,7 @@ public class MonsterBase : MonoBehaviour
             }
         }
     }
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {
