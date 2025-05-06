@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Equip;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +30,7 @@ public class MonsterBase : MonoBehaviour
     public Animator monsterAnimator;
     public GameObject monsterHurtText;
     public Slider hpSlider;
+    public List<MonsterEquip> MonsterEquipList ;//怪物装备列表
 
     //构造方法
     public MonsterBase(MonsterType monsterType, string monsterName, int monsterLevel, int maxHp, float speed, int attack, int defense, int exp, int bloodEnergy, int evolutionEnergy)
@@ -96,6 +99,8 @@ public class MonsterBase : MonoBehaviour
 
     public void Die()
     {
+        //生成装备
+        CreateEquip();
         //生成血能
         GameObject bloodEnergy = Instantiate(Resources.Load<GameObject>("Prefabs/Prop/BloodEnergy"));
         //设置血能位置为怪物位置
@@ -139,6 +144,23 @@ public class MonsterBase : MonoBehaviour
         hpSlider.value = (float)CurrentHp / MaxHp;
         if(CurrentHp<=0)
             Die();
+    }
+
+    private void CreateEquip()
+    {
+        //根据MonsterEquip的概率随机生成装备
+        foreach (MonsterEquip monsterEquip in MonsterEquipList)
+        {
+            int random = UnityEngine.Random.Range(0, 100);
+            if (random <= monsterEquip.Probability)
+            {
+                //生成装备
+                Debug.Log(monsterEquip.Name);
+                GameObject equip = Instantiate(Resources.Load<GameObject>("Prefabs/Equip/" + monsterEquip.Name));
+                //设置装备位置为怪物位置
+                equip.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
