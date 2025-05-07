@@ -16,7 +16,7 @@ public class BagController : XSingleton<BagController>
     {
         foreach (var equip in EquipidDic)
         {
-            bagGrid.transform.Find("BagGridImage").GetComponent<Image>().sprite = equip.Value;
+            bagGrid.transform.Find("BagGridImage").GetComponent<Button>().image.sprite = equip.Value;
             Instantiate(bagGrid, UITool.S.GetChildGameObject("EquipContent").transform);
         }
     }
