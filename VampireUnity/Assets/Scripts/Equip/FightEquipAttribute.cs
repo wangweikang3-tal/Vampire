@@ -6,5 +6,6 @@ namespace Equip
     {
         public EquipQuality EquipQuality;
         public Dictionary<EquipAttribute,int> Attributes = new Dictionary<EquipAttribute,int>();
+        
     }
 }

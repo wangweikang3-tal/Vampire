@@ -1,19 +1,44 @@
-using System;
+using Mysql;
+using UnityEngine;
+using Random = System.Random;
 
 namespace Equip
 {
     public class PrimaryCloth:EquipBase
     {
-        public PrimaryCloth() : base(equipID: 1, "PrimaryClothFight", new FightEquipAttribute()){}
+        public PrimaryCloth() : base( "PrimaryClothFight", new EquipTable()){}
 
         private void Awake()
         {
-            EquipAttributes.EquipQuality = EquipQuality.White;
-            //添加防御，随机10-20
-            Random random = new Random();
-            EquipAttributes.Attributes.Add(EquipAttribute.Denfense, random.Next(1, 4));
-            //添加生命值，随机10-20
-            EquipAttributes.Attributes.Add(EquipAttribute.HP, random.Next(10, 20));
+            // EquipAttributes.EquipQuality = EquipQuality.White;
+            // //添加防御，随机10-20
+             Random random = new Random();
+            // EquipAttributes.Attributes.Add(EquipAttribute.Denfense, random.Next(1, 4));
+            // //添加生命值，随机10-20
+            // EquipAttributes.Attributes.Add(EquipAttribute.HP, random.Next(10, 20));
+            EquipAttributes.Quality = 1;
+            EquipAttributes.Denfense=random.Next(1,4);
+            EquipAttributes.HP=random.Next(10,20);
+            
+        }
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("PickUp"))
+            {
+                isPickUp= true;
+            }else if (other.CompareTag("Player"))
+            {
+                //将这件装备的属性添加到BagController上
+                BagController.S.equipList.Add(this);
+                //将这件装备的属性添加到数据库
+                if(EquipAttributes== null)
+                    Debug.Log("EquipAttributes为空");
+                else
+                    Debug.Log("EquipAttributes不为空");
+                EquipController.S.InsertEquip(EquipAttributes);
+                //如果被拾取，销毁装备
+                Destroy(gameObject);
+            }
         }
     }
 }

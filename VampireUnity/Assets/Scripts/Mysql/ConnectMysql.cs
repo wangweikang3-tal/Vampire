@@ -20,8 +20,8 @@ public class ConnectMysql : XSingleton<ConnectMysql>
 
         connectionString = $"server={server};database={database};uid={user};pwd={password};";
         ConnectToDatabase();
-        UserController.S.GetUserTable();
-        UserController.S.GetMaxUserId();
+        // UserController.S.GetUserTable();
+        // UserController.S.GetMaxUserId();
     }
 
     void ConnectToDatabase()

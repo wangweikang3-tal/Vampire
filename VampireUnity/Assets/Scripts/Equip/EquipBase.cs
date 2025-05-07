@@ -1,20 +1,19 @@
 using System;
 using System.Collections;
 using Equip;
+using Mysql;
 using UnityEngine;
 
 public class EquipBase : MonoBehaviour
 {
     [NonSerialized]public Rigidbody2D equipRb;
-   [NonSerialized] public int equipID; // 装备ID
    [NonSerialized]public string equipName;//装备名字
-   [NonSerialized]public FightEquipAttribute EquipAttributes; // 装备属性
+   [NonSerialized]public EquipTable EquipAttributes; // 装备属性
     [NonSerialized]public float speed = 5f; // 装备跟随的速度
     [NonSerialized]public bool isPickUp = false; // 是否被拾取
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public EquipBase(int equipID,string equipName,FightEquipAttribute equipAttribute)
+    public EquipBase(string equipName,EquipTable equipAttribute)
     {
-        this.equipID = equipID;
         this.equipName = equipName;
         this.EquipAttributes = equipAttribute;
     }
@@ -35,21 +34,6 @@ public class EquipBase : MonoBehaviour
         rb.velocity = Vector2.zero;
         //设置重力为0
         rb.gravityScale = 0;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("aaadsadas");
-        if (other.CompareTag("PickUp"))
-        {
-            isPickUp= true;
-        }else if (other.CompareTag("Player"))
-        {
-            //如果被拾取，销毁装备
-            Destroy(gameObject);
-            //将这件装备的属性添加到BagController上
-            BagController.S.equipList.Add(this);
-        }
     }
 
     private void Update()
