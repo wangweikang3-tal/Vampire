@@ -10,7 +10,8 @@ public class BagButtonFight : MonoBehaviour
         {
             //暂停游戏
             Time.timeScale = 0;
-            Instantiate(Resources.Load("Prefabs/Window/Bag"),GameController.S.transform) ;
+            Instantiate(Resources.Load("Prefabs/Window/Bag"),GameObject.Find("UIRoot").transform) ;
+            BagController.S.ShowEquip();
         });
     }
 
