@@ -26,6 +26,12 @@ public class SnotMonster : MonsterBase
 
     public override void AddMonsterEquip()
     {
-        MonsterEquipList.Add(new MonsterEquip("PrimaryClothFight", 100));
+        MonsterEquipList.Add(new MonsterEquip("PrimaryClothFight", 10));
+        MonsterEquipList.Add(new MonsterEquip("PrimaryRingFight", 10));
+        MonsterEquipList.Add(new MonsterEquip("PrimaryCloakFight", 10));
+        MonsterEquipList.Add(new MonsterEquip("PrimaryShoeFight", 10));
+        MonsterEquipList.Add(new MonsterEquip("PrimaryNecklaceFight", 10));
+        MonsterEquipList.Add(new MonsterEquip("PrimaryHelmetFight", 10));
+
     }
 }
