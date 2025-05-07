@@ -31,10 +31,7 @@ namespace Equip
                 //将这件装备的属性添加到BagController上
                 BagController.S.equipList.Add(this);
                 //将这件装备的属性添加到数据库
-                if(EquipAttributes== null)
-                    Debug.Log("EquipAttributes为空");
-                else
-                    Debug.Log("EquipAttributes不为空");
+                EquipAttributes.Equipid= EquipController.S.MaxClothID() + 1;
                 EquipController.S.InsertEquip(EquipAttributes);
                 //如果被拾取，销毁装备
                 Destroy(gameObject);

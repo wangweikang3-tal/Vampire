@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using MySqlConnector;
 using UnityEngine;
@@ -25,6 +26,195 @@ namespace Mysql
             {
                 Debug.LogError("Error inserting equip: " + ex.Message);
             }
+        }
+
+        public int MaxPropID()
+        {
+            //获取mysql的equip表中的equipid在10000000-19999999之间的最大值
+            string sql = "SELECT MAX(equipid) FROM equip WHERE equipid BETWEEN 10000000 AND 19999999";
+            MySqlCommand command = new MySqlCommand(sql, ConnectMysql.Connection);
+            int maxID = 0;
+            try
+            {
+                object result = command.ExecuteScalar();
+                if (result != DBNull.Value)
+                {
+                    maxID = Convert.ToInt32(result);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.LogError("Error getting max equipid: " + ex.Message);
+            }
+            return maxID>10000000?maxID:10000000;
+        }
+        
+        public int MaxPrimaryWeaponID()
+        {
+            //获取mysql的equip表中的equipid在10000000-19999999之间的最大值
+            string sql = "SELECT MAX(equipid) FROM equip WHERE equipid BETWEEN 20000000 AND 29999999";
+            MySqlCommand command = new MySqlCommand(sql, ConnectMysql.Connection);
+            int maxID = 0;
+            try
+            {
+                object result = command.ExecuteScalar();
+                if (result != DBNull.Value)
+                {
+                    maxID = Convert.ToInt32(result);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.LogError("Error getting max equipid: " + ex.Message);
+            }
+            return maxID>20000000?maxID:20000000;
+        }
+        
+        public int MaxSecondaryWeaponID()
+        {
+            //获取mysql的equip表中的equipid在10000000-19999999之间的最大值
+            string sql = "SELECT MAX(equipid) FROM equip WHERE equipid BETWEEN 30000000 AND 39999999";
+            MySqlCommand command = new MySqlCommand(sql, ConnectMysql.Connection);
+            int maxID = 0;
+            try
+            {
+                object result = command.ExecuteScalar();
+                if (result != DBNull.Value)
+                {
+                    maxID = Convert.ToInt32(result);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.LogError("Error getting max equipid: " + ex.Message);
+            }
+            return maxID>30000000?maxID:30000000;
+        }
+        
+        public int MaxClothID()
+        {
+            //获取mysql的equip表中的equipid在10000000-19999999之间的最大值
+            string sql = "SELECT MAX(equipid) FROM equip WHERE equipid BETWEEN 40000000 AND 49999999";
+            MySqlCommand command = new MySqlCommand(sql, ConnectMysql.Connection);
+            int maxID = 0;
+            try
+            {
+                object result = command.ExecuteScalar();
+                if (result != DBNull.Value)
+                {
+                    maxID = Convert.ToInt32(result);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.LogError("Error getting max equipid: " + ex.Message);
+            }
+            return maxID>40000000?maxID:40000000;
+        }
+        
+        public int MaxShoeID()
+        {
+            //获取mysql的equip表中的equipid在10000000-19999999之间的最大值
+            string sql = "SELECT MAX(equipid) FROM equip WHERE equipid BETWEEN 50000000 AND 59999999";
+            MySqlCommand command = new MySqlCommand(sql, ConnectMysql.Connection);
+            int maxID = 0;
+            try
+            {
+                object result = command.ExecuteScalar();
+                if (result != DBNull.Value)
+                {
+                    maxID = Convert.ToInt32(result);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.LogError("Error getting max equipid: " + ex.Message);
+            }
+            return maxID>50000000?maxID:50000000;
+        }
+        
+        public int MaxRingID()
+        {
+            //获取mysql的equip表中的equipid在10000000-19999999之间的最大值
+            string sql = "SELECT MAX(equipid) FROM equip WHERE equipid BETWEEN 60000000 AND 69999999";
+            MySqlCommand command = new MySqlCommand(sql, ConnectMysql.Connection);
+            int maxID = 0;
+            try
+            {
+                object result = command.ExecuteScalar();
+                if (result != DBNull.Value)
+                {
+                    maxID = Convert.ToInt32(result);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.LogError("Error getting max equipid: " + ex.Message);
+            }
+            return maxID>60000000?maxID:60000000;
+        }
+        
+        public int MaxNecklaceID()
+        {
+            //获取mysql的equip表中的equipid在10000000-19999999之间的最大值
+            string sql = "SELECT MAX(equipid) FROM equip WHERE equipid BETWEEN 70000000 AND 79999999";
+            MySqlCommand command = new MySqlCommand(sql, ConnectMysql.Connection);
+            int maxID = 0;
+            try
+            {
+                object result = command.ExecuteScalar();
+                if (result != DBNull.Value)
+                {
+                    maxID = Convert.ToInt32(result);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.LogError("Error getting max equipid: " + ex.Message);
+            }
+            return maxID>70000000?maxID:70000000;
+        }
+        
+        public int MaxHelmetID()
+        {
+            //获取mysql的equip表中的equipid在10000000-19999999之间的最大值
+            string sql = "SELECT MAX(equipid) FROM equip WHERE equipid BETWEEN 80000000 AND 89999999";
+            MySqlCommand command = new MySqlCommand(sql, ConnectMysql.Connection);
+            int maxID = 0;
+            try
+            {
+                object result = command.ExecuteScalar();
+                if (result != DBNull.Value)
+                {
+                    maxID = Convert.ToInt32(result);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.LogError("Error getting max equipid: " + ex.Message);
+            }
+            return maxID>80000000?maxID:80000000;
+        }
+        
+        public int MaxCloakID()
+        {
+            //获取mysql的equip表中的equipid在10000000-19999999之间的最大值
+            string sql = "SELECT MAX(equipid) FROM equip WHERE equipid BETWEEN 90000000 AND 99999999";
+            MySqlCommand command = new MySqlCommand(sql, ConnectMysql.Connection);
+            int maxID = 0;
+            try
+            {
+                object result = command.ExecuteScalar();
+                if (result != DBNull.Value)
+                {
+                    maxID = Convert.ToInt32(result);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.LogError("Error getting max equipid: " + ex.Message);
+            }
+            return maxID>90000000?maxID:90000000;
         }
     }
 }
