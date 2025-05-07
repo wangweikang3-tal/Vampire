@@ -29,30 +29,31 @@ public class EquipBase : MonoBehaviour
     // Update is called once per frame
     private IEnumerator StopVelocityAfterDelay(Rigidbody2D rb, float delay)
     {
-        Debug.Log("协程启动");
         yield return new WaitForSeconds(delay);
-        Debug.Log("等待结束");
         if(rb == null)
             Debug.Log("rb为空");
         rb.velocity = Vector2.zero;
         //设置重力为0
         rb.gravityScale = 0;
-        Debug.Log("aaaaaaaaaaaaa");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("aaadsadas");
         if (other.CompareTag("PickUp"))
         {
             isPickUp= true;
         }else if (other.CompareTag("Player"))
         {
+            //如果被拾取，销毁装备
             Destroy(gameObject);
+            //将这件装备的属性添加到BagController上
         }
     }
 
     private void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, GameController.S.gamePlayer.transform.position, Time.deltaTime * speed);
+        if(isPickUp)
+            transform.position = Vector3.Lerp(transform.position, GameController.S.gamePlayer.transform.position, Time.deltaTime * speed);
     }
 }
