@@ -11,6 +11,7 @@ public class EquipBase : MonoBehaviour
    [NonSerialized]public EquipTable EquipAttributes; // 装备属性
     [NonSerialized]public float speed = 5f; // 装备跟随的速度
     [NonSerialized]public bool isPickUp = false; // 是否被拾取
+    [NonSerialized]public SpriteRenderer SpriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public EquipBase(string equipName,EquipTable equipAttribute)
     {

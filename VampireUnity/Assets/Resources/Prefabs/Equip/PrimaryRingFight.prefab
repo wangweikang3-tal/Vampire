@@ -4865,7 +4865,7 @@ GameObject:
   - component: {fileID: 6317821766959702852}
   - component: {fileID: 2041002666431383521}
   m_Layer: 0
-  m_Name: PrimaryClothSprite
+  m_Name: PrimaryRingSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9806,8 +9806,7 @@ GameObject:
   - component: {fileID: 5551387582642606530}
   - component: {fileID: 1027149459322992458}
   - component: {fileID: 2330115459671006499}
-  - component: {fileID: 4920113832776333971}
-  - component: {fileID: 1730661478212055639}
+  - component: {fileID: 4193062179503207379}
   m_Layer: 7
   m_Name: PrimaryRingFight
   m_TagString: Equip
@@ -9905,19 +9904,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4920113832776333971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3307130674976154620}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee34cafd1e5294e26ae32b0139aff7b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1730661478212055639
+--- !u!114 &4193062179503207379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9926,7 +9913,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3307130674976154620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6f4cc7d6da648d193d4838ceb76be07, type: 3}
+  m_Script: {fileID: 11500000, guid: 084e3ac3901341458b99d351d551305d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4187916974238317384
@@ -9941,7 +9928,7 @@ GameObject:
   - component: {fileID: 4728471769152392325}
   - component: {fileID: 4487627386756995809}
   m_Layer: 0
-  m_Name: PrimaryClothWhite
+  m_Name: PrimaryRingWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

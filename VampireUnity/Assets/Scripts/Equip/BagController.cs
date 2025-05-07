@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BagController : XSingleton<BagController>
 {
-    public List<EquipBase> equipList = new List<EquipBase>();
+    public Dictionary<int, Sprite> EquipidDic = new Dictionary<int, Sprite>();
     public GameObject bagGrid;
 
     protected override void Awake()
@@ -13,9 +14,15 @@ public class BagController : XSingleton<BagController>
 
     public void ShowEquip()
     {
-        foreach (var equip in equipList)
+        foreach (var equip in EquipidDic)
         {
+            bagGrid.transform.Find("BagGridImage").GetComponent<Image>().sprite = equip.Value;
             Instantiate(bagGrid, UITool.S.GetChildGameObject("EquipContent").transform);
         }
+    }
+
+    public void AddEquip(EquipBase equip)
+    {
+        var equiptemp=new EquipBase(equip.equipName,equip.EquipAttributes);
     }
 }

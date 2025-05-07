@@ -4866,7 +4866,7 @@ GameObject:
   - component: {fileID: 4748143427835716176}
   - component: {fileID: 485034501073700289}
   m_Layer: 0
-  m_Name: PrimaryClothWhite
+  m_Name: PrimaryShoeWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14549,7 +14549,7 @@ GameObject:
   - component: {fileID: 8522578481545866505}
   - component: {fileID: 1818074660632677449}
   m_Layer: 0
-  m_Name: PrimaryClothSprite
+  m_Name: PrimaryShoeSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14636,8 +14636,7 @@ GameObject:
   - component: {fileID: 5166817180900663193}
   - component: {fileID: 6962806869873974569}
   - component: {fileID: 4677089161381056668}
-  - component: {fileID: 4101521163560063077}
-  - component: {fileID: 8793993636560147251}
+  - component: {fileID: 3341499553952616830}
   m_Layer: 7
   m_Name: PrimaryShoeFight
   m_TagString: Equip
@@ -14735,19 +14734,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4101521163560063077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7902244539817545816}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee34cafd1e5294e26ae32b0139aff7b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8793993636560147251
+--- !u!114 &3341499553952616830
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14756,7 +14743,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7902244539817545816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6f4cc7d6da648d193d4838ceb76be07, type: 3}
+  m_Script: {fileID: 11500000, guid: cc107b452159477fbefe3134a958c7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8329304813895687385

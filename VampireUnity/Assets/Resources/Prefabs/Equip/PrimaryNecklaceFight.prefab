@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 5176751350792235963}
   - component: {fileID: 1848966543054058870}
   - component: {fileID: 3162261939728337358}
-  - component: {fileID: 793575705658308341}
-  - component: {fileID: 7573630737006998867}
+  - component: {fileID: 3577839707675142055}
   m_Layer: 7
   m_Name: PrimaryNecklaceFight
   m_TagString: Equip
@@ -110,19 +109,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &793575705658308341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4572725941558448090}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee34cafd1e5294e26ae32b0139aff7b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7573630737006998867
+--- !u!114 &3577839707675142055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4572725941558448090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6f4cc7d6da648d193d4838ceb76be07, type: 3}
+  m_Script: {fileID: 11500000, guid: 724ba731b22c4f3eadb1d3dff272d34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5450100012273342389
@@ -4999,7 +4986,7 @@ GameObject:
   - component: {fileID: 1716233116239594985}
   - component: {fileID: 3141171449501024322}
   m_Layer: 0
-  m_Name: PrimaryClothSprite
+  m_Name: PrimaryNecklaceSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9999,7 +9986,7 @@ GameObject:
   - component: {fileID: 8409187476680042566}
   - component: {fileID: 6499186027590221900}
   m_Layer: 0
-  m_Name: PrimaryClothWhite
+  m_Name: PrimaryNecklaceWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
