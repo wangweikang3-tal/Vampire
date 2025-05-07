@@ -14,9 +14,9 @@ public class ConnectMysql : XSingleton<ConnectMysql>
     void Start()
     {
         // 根据你的 MySQL 服务器配置填写这些信息
-        string server = "localhost";
+        string server = "rm-cn-oo0492f6o000rto.rwlb.rds.aliyuncs.com";
         string database = "Vampire";
-        string user = "root";
+        string user = "wwk18255113901";
         string password = "BaiChen123456+";
 
         _connectionString = $"server={server};database={database};uid={user};pwd={password};";
