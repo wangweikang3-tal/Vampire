@@ -1,5 +1,6 @@
 namespace Equip
 {
+    //怪物掉落装备的基本属性
     public class MonsterEquip
     {
         public string Name;

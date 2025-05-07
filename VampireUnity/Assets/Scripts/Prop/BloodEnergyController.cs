@@ -13,7 +13,7 @@ public class BloodEnergyController : MonoBehaviour
             isPickUp= true;
         }else if (other.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
