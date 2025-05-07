@@ -48,6 +48,7 @@ public class EquipBase : MonoBehaviour
             //如果被拾取，销毁装备
             Destroy(gameObject);
             //将这件装备的属性添加到BagController上
+            BagController.S.equipList.Add(this);
         }
     }
 

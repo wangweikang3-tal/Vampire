@@ -1,3 +1,4 @@
+using Mysql;
 using MySqlConnector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +25,7 @@ public class LoginWindow : BasePanel
         UITool.S.GetChildGameObject("RegisterButton").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
         {
             GetInputField();
-            ConnectMysql.S.InsertUser(_usernameInputField.text,_passwordInputField.text);
+            UserController.S.InsertUser(_usernameInputField.text,_passwordInputField.text);
             Debug.Log("注册成功");
             UITool.S.GetChildGameObject("LoginWindow").SetActive(false);
 
@@ -39,7 +40,7 @@ public class LoginWindow : BasePanel
             string password = _passwordInputField.text;
             //到ConnectMysql中的Users列表验证用户名和密码
             bool isLogin = false;
-            foreach (var user in ConnectMysql.S.Users)
+            foreach (var user in UserController.S.Users)
             {
                 if (user.Username == username && user.Password == password)
                 {

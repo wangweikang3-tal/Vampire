@@ -328,12 +328,12 @@
         </member>
         <member name="F:NugetForUnity.PluginAPI.PackageUninstallReason.IndividualUninstall">
             <summary>
-                User has requested individual packages to be uninstalled from the project.
+                UserTable has requested individual packages to be uninstalled from the project.
             </summary>
         </member>
         <member name="F:NugetForUnity.PluginAPI.PackageUninstallReason.UninstallAll">
             <summary>
-                User has requested all packages to be uninstalled from the project.
+                UserTable has requested all packages to be uninstalled from the project.
             </summary>
         </member>
         <member name="F:NugetForUnity.PluginAPI.PackageUninstallReason.IndividualUpdate">

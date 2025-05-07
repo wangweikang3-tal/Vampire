@@ -947,7 +947,7 @@
         </member>
         <member name="F:MySqlConnector.MySqlCertificateStoreLocation.LocalMachine">
             <summary>
-            User certificate store for the machine
+            UserTable certificate store for the machine
             </summary>
         </member>
         <member name="T:MySqlConnector.MySqlCommand">
