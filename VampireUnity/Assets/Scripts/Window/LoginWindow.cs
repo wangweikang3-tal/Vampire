@@ -27,7 +27,9 @@ public class LoginWindow : BasePanel
             GetInputField();
             UserController.S.InsertUser(_usernameInputField.text,_passwordInputField.text);
             Debug.Log("注册成功");
-            UITool.S.GetChildGameObject("LoginWindow").SetActive(false);
+            PanelManager.S.PopPanel();
+
+            //UITool.S.GetChildGameObject("LoginWindow").SetActive(false);
 
         });
             
@@ -52,7 +54,8 @@ public class LoginWindow : BasePanel
             if (isLogin)
             {
                 // 登陆成功，进入游戏
-                UITool.S.GetChildGameObject("LoginWindow").SetActive(false);
+                PanelManager.S.PopPanel();
+               // UITool.S.GetChildGameObject("LoginWindow").SetActive(false);
             }
             else
             {
@@ -64,6 +67,7 @@ public class LoginWindow : BasePanel
     
     public override void OnExit()
     {
+         UITool.S.GetChildGameObject("LoginWindow").SetActive(false);
         Debug.Log("LoginWindow OnExit");
         // Add your cleanup code here
     }

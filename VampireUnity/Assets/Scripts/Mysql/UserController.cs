@@ -15,6 +15,7 @@ namespace Mysql
         //向User表中插入数据
         public void InsertUser(string username, string password)
         {
+            GetMaxUserId();
             string query = "INSERT INTO user (userid, username, passward) VALUES (@userid, @username, @passward)";
             MySqlCommand command = new MySqlCommand(query, ConnectMysql.Connection);
             command.Parameters.AddWithValue("@userid", maxUserid + 1);
