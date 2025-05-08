@@ -16,6 +16,7 @@ public class BagGrid : MonoBehaviour
     {
         gridButton.onClick.AddListener(() =>
         {
+            //显示装备属性面板
             EquipTable equipTable = EquipController.S.GetEquipAttributeFromMysql(EquipId);
             GameObject equipAttribute=Instantiate(Resources.Load<GameObject>("Prefabs/Equip/EquipAttribute"), BagController.S.transform);
             GameObject equipAttributeEquip=equipAttribute.transform.Find("EquipAttributeEquip").gameObject;
@@ -23,6 +24,52 @@ public class BagGrid : MonoBehaviour
             equipAttributeEquipImage.GetComponent<Image>().sprite = equipAttributeImage;
             GameObject equipAttributeName=equipAttribute.transform.Find("EquipAttributeName").gameObject;
             equipAttributeName.GetComponent<Text>().text = EquipName.EquipNameDic[equipTable.EquipName];
+            GameObject equipAttributeContent=equipAttribute.transform.Find("ScrollView").Find("Viewport").Find("Content").gameObject;
+            if (equipTable.Damage != 0)
+            {
+                GameObject EquipAttributeItem=Instantiate(Resources.Load<GameObject>("Prefabs/Equip/EquipAttributeItem"), equipAttributeContent.transform);
+                EquipAttributeItem.GetComponent<Text>().text="攻击力："+equipTable.Damage;
+            }
+            if (equipTable.HP != 0)
+            {
+                GameObject EquipAttributeItem=Instantiate(Resources.Load<GameObject>("Prefabs/Equip/EquipAttributeItem"), equipAttributeContent.transform);
+                EquipAttributeItem.GetComponent<Text>().text="生命值："+equipTable.HP;
+            }
+            if (equipTable.Denfense != 0)
+            {
+                GameObject EquipAttributeItem=Instantiate(Resources.Load<GameObject>("Prefabs/Equip/EquipAttributeItem"), equipAttributeContent.transform);
+                EquipAttributeItem.GetComponent<Text>().text="防御力："+equipTable.Denfense;
+            }
+            if (equipTable.CRIT != 0)
+            {
+                GameObject EquipAttributeItem=Instantiate(Resources.Load<GameObject>("Prefabs/Equip/EquipAttributeItem"), equipAttributeContent.transform);
+                EquipAttributeItem.GetComponent<Text>().text="暴击率："+equipTable.CRIT;
+            }
+            if (equipTable.CRITDamage != 0)
+            {
+                GameObject EquipAttributeItem=Instantiate(Resources.Load<GameObject>("Prefabs/Equip/EquipAttributeItem"), equipAttributeContent.transform);
+                EquipAttributeItem.GetComponent<Text>().text="暴击伤害："+equipTable.CRITDamage;
+            }
+            if (equipTable.BloodSuck != 0)
+            {
+                GameObject EquipAttributeItem=Instantiate(Resources.Load<GameObject>("Prefabs/Equip/EquipAttributeItem"), equipAttributeContent.transform);
+                EquipAttributeItem.GetComponent<Text>().text="吸血："+equipTable.BloodSuck;
+            }
+            if (equipTable.GoodFortune != 0)
+            {
+                GameObject EquipAttributeItem=Instantiate(Resources.Load<GameObject>("Prefabs/Equip/EquipAttributeItem"), equipAttributeContent.transform);
+                EquipAttributeItem.GetComponent<Text>().text="幸运："+equipTable.GoodFortune;
+            }
+            if (equipTable.MoveSpeed != 0)
+            {
+                GameObject EquipAttributeItem=Instantiate(Resources.Load<GameObject>("Prefabs/Equip/EquipAttributeItem"), equipAttributeContent.transform);
+                EquipAttributeItem.GetComponent<Text>().text="移动速度："+equipTable.MoveSpeed;
+            }
+            if (equipTable.DamageSpeed != 0)
+            {
+                GameObject EquipAttributeItem=Instantiate(Resources.Load<GameObject>("Prefabs/Equip/EquipAttributeItem"), equipAttributeContent.transform);
+                EquipAttributeItem.GetComponent<Text>().text="攻击速度："+equipTable.DamageSpeed;
+            }
         });
     }
 
