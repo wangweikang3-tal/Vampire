@@ -31,6 +31,7 @@ public class BagController : XSingleton<BagController>
             bagGrid.transform.Find("BagGridImage").GetComponent<Button>().image.sprite = equip.Value;
             GameObject bagGridins=Instantiate(bagGrid, equipContent.transform);
             bagGridins.GetComponent<BagGrid>().EquipId = equip.Key;
+            bagGridins.GetComponent<BagGrid>().equipAttributeImage=equip.Value;
         }
     }
 

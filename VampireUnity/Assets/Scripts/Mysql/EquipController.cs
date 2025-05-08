@@ -216,5 +216,43 @@ namespace Mysql
             }
             return maxID>90000000?maxID:90000000;
         }
+
+        public EquipTable GetEquipAttributeFromMysql(int equipId)
+        {
+            //根据equipId从Mysql中获取装备属性
+            string sql = $"SELECT * FROM equip WHERE equipid = {equipId}";
+            MySqlCommand command = new MySqlCommand(sql, ConnectMysql.Connection);
+            MySqlDataReader reader = command.ExecuteReader();
+            EquipTable equipTable = null;
+            try
+            {
+                if (reader.Read())
+                {
+                    equipTable = new EquipTable
+                    {
+                        Equipid = reader.GetInt32("equipid"),
+                        Quality = reader.GetInt32("quality"),
+                        Damage = reader.GetInt32("damage"),
+                        CRIT = reader.GetInt32("crit"),
+                        CRITDamage = reader.GetInt32("critdamage"),
+                        DamageSpeed = reader.GetInt32("damagespeed"),
+                        BloodSuck = reader.GetInt32("bloodsuck"),
+                        Denfense = reader.GetInt32("denfense"),
+                        HP = reader.GetInt32("hp"),
+                        MoveSpeed = reader.GetInt32("movespeed"),
+                        GoodFortune = reader.GetInt32("goodfortune")
+                    };
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.LogError("Error getting equip attribute: " + ex.Message);
+            }
+            finally
+            {
+                reader.Close();
+            }
+            return equipTable;
+        }
     }
 }
