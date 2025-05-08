@@ -20,10 +20,16 @@ public class BagController : XSingleton<BagController>
 
     public void ShowEquip()
     {
+        GameObject equipContent = UITool.S.GetChildGameObject("EquipContent");
+        //清空equipContent的所有子物体
+        foreach (Transform child in equipContent.transform)
+        {
+            Destroy(child.gameObject);
+        }
         foreach (var equip in EquipidDic)
         {
             bagGrid.transform.Find("BagGridImage").GetComponent<Button>().image.sprite = equip.Value;
-            GameObject bagGridins=Instantiate(bagGrid, UITool.S.GetChildGameObject("EquipContent").transform);
+            GameObject bagGridins=Instantiate(bagGrid, equipContent.transform);
             bagGridins.GetComponent<BagGrid>().EquipId = equip.Key;
         }
     }
