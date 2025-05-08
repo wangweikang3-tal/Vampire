@@ -9,6 +9,8 @@ public class BagGrid : MonoBehaviour
     private void Awake()
     {
         
+        
+        
     }
 
     public void OnClick()
