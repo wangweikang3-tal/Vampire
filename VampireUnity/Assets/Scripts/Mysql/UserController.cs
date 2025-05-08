@@ -15,25 +15,22 @@ namespace Mysql
         //向User表中插入数据
         public void InsertUser(string username, string password)
         {
-            GetMaxUserId();
-            string query = "INSERT INTO user (userid, username, passward) VALUES (@userid, @username, @passward)";
+            string query = "INSERT INTO user (username, passward) VALUES (@username, @password)";
             MySqlCommand command = new MySqlCommand(query, ConnectMysql.Connection);
-            command.Parameters.AddWithValue("@userid", maxUserid + 1);
             command.Parameters.AddWithValue("@username", username);
-            command.Parameters.AddWithValue("@passward", password);
+            command.Parameters.AddWithValue("@password", password);
 
             try
             {
                 command.ExecuteNonQuery();
-                Debug.Log("UserTable inserted successfully");
-                GetMaxUserId();
-                GetUserTable();
+                Debug.Log("User inserted successfully.");
             }
             catch (MySqlException ex)
             {
                 Debug.LogError("Error inserting user: " + ex.Message);
             }
         }
+       
 
         //获取User表中最大的userid
         public void GetMaxUserId()
