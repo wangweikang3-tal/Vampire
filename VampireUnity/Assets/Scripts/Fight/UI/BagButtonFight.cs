@@ -8,10 +8,7 @@ public class BagButtonFight : MonoBehaviour
     {
         bagButtonFight.onClick.AddListener(() =>
         {
-            //暂停游戏
-            Time.timeScale = 0;
-            Instantiate(Resources.Load("Prefabs/Window/Bag"),GameObject.Find("UIRoot").transform) ;
-            BagController.S.ShowEquip();
+            BagController.S.ShowBag();
         });
     }
 
