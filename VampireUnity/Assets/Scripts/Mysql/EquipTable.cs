@@ -1,6 +1,10 @@
+using Tool;
+
 public class EquipTable
 {
     public int Equipid { get; set; }
+    public string EquipName { get; set; }
+
     public int Quality { get; set; }
     public int Damage { get; set; }
     public int CRIT { get; set; }
@@ -13,7 +17,8 @@ public class EquipTable
     public int GoodFortune { get; set; }
 
     public EquipTable(
-        int equipid = 0, 
+        int equipid = 0,
+        string equipName = null,
         int quality = 0, 
         int damage = 0, 
         int crit = 0, 
@@ -26,6 +31,7 @@ public class EquipTable
         int goodfortune = 0)
     {
         Equipid = equipid;
+        EquipName = equipName;
         Quality = quality;
         Damage = damage;
         CRIT = crit;

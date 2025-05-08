@@ -12,15 +12,14 @@ namespace Mysql
         
         public void InsertEquip(EquipTable equip)
         {
-            //插入装备到Mysql
-            string sql = $"INSERT INTO equip (equipid, quality, damage, crit, critdamage, damagespeed, bloodsuck, denfense, hp, movespeed, goodfortune) " +
-                         $"VALUES ({equip.Equipid}, {equip.Quality}, {equip.Damage}, {equip.CRIT}, {equip.CRITDamage}, {equip.DamageSpeed}, {equip.BloodSuck}, {equip.Denfense}, {equip.HP}, {equip.MoveSpeed}, {equip.GoodFortune})";
-            //执行sql语句
+            //插入装备到Mysql,包括equipname
+            string sql = $"INSERT INTO equip (equipid, equipname, quality, damage, crit, critdamage, damagespeed, bloodsuck, denfense, hp, movespeed, goodfortune) " +
+                         $"VALUES ({equip.Equipid}, '{equip.EquipName}', {equip.Quality}, {equip.Damage}, {equip.CRIT}, {equip.CRITDamage}, {equip.DamageSpeed}, {equip.BloodSuck}, {equip.Denfense}, {equip.HP}, {equip.MoveSpeed}, {equip.GoodFortune})";
             MySqlCommand command = new MySqlCommand(sql, ConnectMysql.Connection);
             try
             {
                 command.ExecuteNonQuery();
-                Debug.Log("EquipTable inserted successfully");
+                Debug.Log("Insert equip success");
             }
             catch (MySqlException ex)
             {
@@ -231,6 +230,7 @@ namespace Mysql
                     equipTable = new EquipTable
                     {
                         Equipid = reader.GetInt32("equipid"),
+                        EquipName = reader.GetString("equipname"),
                         Quality = reader.GetInt32("quality"),
                         Damage = reader.GetInt32("damage"),
                         CRIT = reader.GetInt32("crit"),

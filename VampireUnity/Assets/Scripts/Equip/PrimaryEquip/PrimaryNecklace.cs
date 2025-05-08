@@ -17,6 +17,7 @@ namespace Equip
             // EquipAttributes.Attributes.Add(EquipAttribute.Denfense, random.Next(1, 4));
             // //添加生命值，随机10-20
             // EquipAttributes.Attributes.Add(EquipAttribute.HP, random.Next(10, 20));
+            EquipAttributes.EquipName = "PrimaryNecklace";
             EquipAttributes.Quality = 1;
             EquipAttributes.GoodFortune=random.Next(5,10);
             EquipAttributes.BloodSuck=random.Next(5,10);
