@@ -8,7 +8,7 @@ namespace Mysql
     public class EquipController:XSingleton<EquipController>
     {
         public List<EquipBase> equipList = new List<EquipBase>();//Mysql中所有的装备
-        
+
         
         public void InsertEquip(EquipTable equip)
         {

@@ -9,6 +9,7 @@ public class BagController : XSingleton<BagController>
     [NonSerialized]public Dictionary<int, Sprite> EquipidDic = new Dictionary<int, Sprite>();
     [NonSerialized]public GameObject bagGrid;
     [NonSerialized]public GameObject bag;
+    [NonSerialized] public GameObject MaskLayer;
 
 
     protected override void Awake()
@@ -17,6 +18,17 @@ public class BagController : XSingleton<BagController>
         bag.gameObject.SetActive(false);
         bagGrid = Resources.Load("Prefabs/Equip/BagGrid")as GameObject;
     }
+    
+    public void CreateMaskLayer()
+    {
+        MaskLayer= Instantiate(Resources.Load<GameObject>("Prefabs/Equip/MaskLayer"), transform);
+    }
+
+    public void DestroyMaskLayer()
+    {
+        Destroy(MaskLayer);
+    }
+
 
     public void ShowEquip()
     {

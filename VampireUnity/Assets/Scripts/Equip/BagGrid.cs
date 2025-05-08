@@ -16,6 +16,8 @@ public class BagGrid : MonoBehaviour
     {
         gridButton.onClick.AddListener(() =>
         {
+            //生成蒙层
+            BagController.S.CreateMaskLayer();
             //显示装备属性面板
             EquipTable equipTable = EquipController.S.GetEquipAttributeFromMysql(EquipId);
             GameObject equipAttribute=Instantiate(Resources.Load<GameObject>("Prefabs/Equip/EquipAttribute"), BagController.S.transform);
