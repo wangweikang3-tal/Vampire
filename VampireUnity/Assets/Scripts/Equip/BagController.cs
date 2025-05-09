@@ -130,37 +130,61 @@ public class BagController : XSingleton<BagController>
     {
         IsInstallCloth = true;
         playerCloth.transform.Find("Image").gameObject.SetActive(true);
-        playerCloth.transform.Find("Image").GetComponent<Image>().sprite = EquipidDic[equipId];
+        playerCloth.transform.Find("Image").GetComponent<Button>().image.sprite = EquipidDic[equipId];
+        playerCloth.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Debug.Log("1111");
+        });
     }
     public void InstallCloak(int equipId)
     {
         IsInstallCloak = true;
         playerCloak.transform.Find("Image").gameObject.SetActive(true);
-        playerCloak.transform.Find("Image").GetComponent<Image>().sprite = EquipidDic[equipId];
+        playerCloak.transform.Find("Image").GetComponent<Button>().image.sprite = EquipidDic[equipId];
+        playerCloak.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Debug.Log("2222");
+        });
     }
     public void InstallRing(int equipId)
     {
         IsInstallRing = true;
         playerRing.transform.Find("Image").gameObject.SetActive(true);
-        playerRing.transform.Find("Image").GetComponent<Image>().sprite = EquipidDic[equipId];
+        playerRing.transform.Find("Image").GetComponent<Button>().image.sprite = EquipidDic[equipId];
+        playerRing.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Debug.Log("3333");
+        });
     }
     public void InstallNecklace(int equipId)
     {
         IsInstallNecklace = true;
         playerNecklace.transform.Find("Image").gameObject.SetActive(true);
-        playerNecklace.transform.Find("Image").GetComponent<Image>().sprite = EquipidDic[equipId];
+        playerNecklace.transform.Find("Image").GetComponent<Button>().image.sprite = EquipidDic[equipId];
+        playerNecklace.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Debug.Log("4444");
+        });
     }
     public void InstallShoe(int equipId)
     {
         IsInstallShoe = true;
         playerShoe.transform.Find("Image").gameObject.SetActive(true);
-        playerShoe.transform.Find("Image").GetComponent<Image>().sprite = EquipidDic[equipId];
+        playerShoe.transform.Find("Image").GetComponent<Button>().image.sprite = EquipidDic[equipId];
+        playerShoe.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Debug.Log("5555");
+        });
     }
     public void InstallHelmet(int equipId)
     {
         IsInstallHelmet = true;
         playerHelmet.transform.Find("Image").gameObject.SetActive(true);
-        playerHelmet.transform.Find("Image").GetComponent<Image>().sprite = EquipidDic[equipId];
+        playerHelmet.transform.Find("Image").GetComponent<Button>().image.sprite = EquipidDic[equipId];
+        playerHelmet.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Debug.Log("6666");
+        });
     }
     /// <summary>
     /// 卸装备
@@ -169,37 +193,37 @@ public class BagController : XSingleton<BagController>
     {
         IsInstallCloth = false;
         playerCloth.transform.Find("Image").gameObject.SetActive(false);
-        playerCloth.transform.Find("Image").GetComponent<Image>().sprite = null;
+        playerCloth.transform.Find("Image").GetComponent<Button>().image.sprite = null;
     }
     public void UnInstallCloak()
     {
         IsInstallCloak = false;
         playerCloak.transform.Find("Image").gameObject.SetActive(false);
-        playerCloak.transform.Find("Image").GetComponent<Image>().sprite = null;
+        playerCloak.transform.Find("Image").GetComponent<Button>().image.sprite = null;
     }
     public void UnInstallRing()
     {
         IsInstallRing = false;
         playerRing.transform.Find("Image").gameObject.SetActive(false);
-        playerRing.transform.Find("Image").GetComponent<Image>().sprite = null;
+        playerRing.transform.Find("Image").GetComponent<Button>().image.sprite = null;
     }
     public void UnInstallNecklace()
     {
         IsInstallNecklace = false;
         playerNecklace.transform.Find("Image").gameObject.SetActive(false);
-        playerNecklace.transform.Find("Image").GetComponent<Image>().sprite = null;
+        playerNecklace.transform.Find("Image").GetComponent<Button>().image.sprite = null;
     }
     public void UnInstallShoe()
     {
         IsInstallShoe = false;
         playerShoe.transform.Find("Image").gameObject.SetActive(false);
-        playerShoe.transform.Find("Image").GetComponent<Image>().sprite = null;
+        playerShoe.transform.Find("Image").GetComponent<Button>().image.sprite = null;
     }
     public void UnInstallHelmet()
     {
         IsInstallHelmet = false;
         playerHelmet.transform.Find("Image").gameObject.SetActive(false);
-        playerHelmet.transform.Find("Image").GetComponent<Image>().sprite = null;
+        playerHelmet.transform.Find("Image").GetComponent<Button>().image.sprite = null;
     }
     
     
