@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4650419830693499582}
   - component: {fileID: 3251321088436494917}
   - component: {fileID: 5910602044697771240}
+  - component: {fileID: 8988067153599044191}
   m_Layer: 0
   m_Name: EquipAttribute
   m_TagString: Untagged
@@ -110,6 +111,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8988067153599044191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138973643886134132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3558851d893134195a04a0a330f7c344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitButton: {fileID: 8370983058380059456}
+  installButton: {fileID: 7022730968880539965}
+  sellButton: {fileID: 5478422665978229779}
 --- !u!1 &291564570272307520
 GameObject:
   m_ObjectHideFlags: 0
