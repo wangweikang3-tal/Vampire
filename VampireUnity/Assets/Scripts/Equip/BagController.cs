@@ -5,7 +5,6 @@ using Tool;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class BagController : XSingleton<BagController>
 {
     [NonSerialized] public Dictionary<int, Sprite> EquipidDic = new Dictionary<int, Sprite>(); //背包里所有的装备
@@ -27,6 +26,16 @@ public class BagController : XSingleton<BagController>
     [NonSerialized] private bool IsInstallNecklace = false;
     [NonSerialized] private bool IsInstallShoe = false;
     [NonSerialized] private bool IsInstallHelmet = false;
+
+    //player穿的装备的属性
+    [NonSerialized] public EquipTable PlayerClothAttribute=new EquipTable();
+    [NonSerialized] public EquipTable PlayerCloakAttribute=new EquipTable();
+    [NonSerialized] public EquipTable PlayerRingAttribute=new EquipTable();
+    [NonSerialized] public EquipTable PlayerNecklaceAttribute=new EquipTable();
+    [NonSerialized] public EquipTable PlayerShoeAttribute=new EquipTable();
+    [NonSerialized] public EquipTable PlayerHelmetAttribute=new EquipTable();
+    
+
 
 
 
@@ -395,6 +404,51 @@ public class BagController : XSingleton<BagController>
         }
         // 如果未找到匹配项或出现问题，返回 null
         return null;
+    }
+
+    public void ComputeEquipAttribute()
+    {
+        GlobaPlayerAttribute.EquipDamage=PlayerClothAttribute.Damage+PlayerCloakAttribute.Damage+
+            PlayerRingAttribute.Damage+PlayerNecklaceAttribute.Damage+PlayerShoeAttribute.Damage+
+            PlayerHelmetAttribute.Damage;
+        GlobaPlayerAttribute.EquipMaxHp=PlayerClothAttribute.HP+PlayerCloakAttribute.HP+
+            PlayerRingAttribute.HP+PlayerNecklaceAttribute.HP+PlayerShoeAttribute.HP+
+            PlayerHelmetAttribute.HP;
+        GlobaPlayerAttribute.EquipMoveSpeed=PlayerClothAttribute.MoveSpeed+PlayerCloakAttribute.MoveSpeed+
+            PlayerRingAttribute.MoveSpeed+PlayerNecklaceAttribute.MoveSpeed+PlayerShoeAttribute.MoveSpeed+
+            PlayerHelmetAttribute.MoveSpeed;
+        GlobaPlayerAttribute.EquipAttackSpeed=PlayerClothAttribute.DamageSpeed+PlayerCloakAttribute.DamageSpeed+
+            PlayerRingAttribute.DamageSpeed+PlayerNecklaceAttribute.DamageSpeed+PlayerShoeAttribute.DamageSpeed+
+            PlayerHelmetAttribute.DamageSpeed;
+        GlobaPlayerAttribute.EquipCRIT=PlayerClothAttribute.CRIT+PlayerCloakAttribute.CRIT+
+            PlayerRingAttribute.CRIT+PlayerNecklaceAttribute.CRIT+PlayerShoeAttribute.CRIT+
+            PlayerHelmetAttribute.CRIT;
+        GlobaPlayerAttribute.EquipCRITDamage=PlayerClothAttribute.CRITDamage+PlayerCloakAttribute.CRITDamage+
+            PlayerRingAttribute.CRITDamage+PlayerNecklaceAttribute.CRITDamage+PlayerShoeAttribute.CRITDamage+
+            PlayerHelmetAttribute.CRITDamage; 
+        GlobaPlayerAttribute.EquipBloodSuck=PlayerClothAttribute.BloodSuck+PlayerCloakAttribute.BloodSuck+
+            PlayerRingAttribute.BloodSuck+PlayerNecklaceAttribute.BloodSuck+PlayerShoeAttribute.BloodSuck+
+            PlayerHelmetAttribute.BloodSuck;
+        GlobaPlayerAttribute.EquipDenfense=PlayerClothAttribute.Denfense+PlayerCloakAttribute.Denfense+
+            PlayerRingAttribute.Denfense+PlayerNecklaceAttribute.Denfense+PlayerShoeAttribute.Denfense+
+            PlayerHelmetAttribute.Denfense;
+        GlobaPlayerAttribute.EquipGoodFortune=PlayerClothAttribute.GoodFortune+PlayerCloakAttribute.GoodFortune+
+            PlayerRingAttribute.GoodFortune+PlayerNecklaceAttribute.GoodFortune+PlayerShoeAttribute.GoodFortune+
+            PlayerHelmetAttribute.GoodFortune;
+    }
+
+    public void ComputeTotalAttribute()
+    {
+        ComputeEquipAttribute();
+        GlobaPlayerAttribute.TotalDamage = GlobaPlayerAttribute.PlayerDamage + GlobaPlayerAttribute.EquipDamage;
+        GlobaPlayerAttribute.TotalMaxHp = GlobaPlayerAttribute.PlayerMaxHp + GlobaPlayerAttribute.EquipMaxHp;
+        GlobaPlayerAttribute.TotalMoveSpeed = GlobaPlayerAttribute.PlayerMoveSpeed + GlobaPlayerAttribute.EquipMoveSpeed;
+        GlobaPlayerAttribute.TotalAttackSpeed = GlobaPlayerAttribute.PlayerAttackSpeed + GlobaPlayerAttribute.EquipAttackSpeed;
+        GlobaPlayerAttribute.TotalCRIT = GlobaPlayerAttribute.PlayerCRIT + GlobaPlayerAttribute.EquipCRIT;
+        GlobaPlayerAttribute.TotalCRITDamage = GlobaPlayerAttribute.PlayerCRITDamage + GlobaPlayerAttribute.EquipCRITDamage;
+        GlobaPlayerAttribute.TotalBloodSuck = GlobaPlayerAttribute.PlayerBloodSuck + GlobaPlayerAttribute.EquipBloodSuck;
+        GlobaPlayerAttribute.TotalDenfense = GlobaPlayerAttribute.PlayerDenfense + GlobaPlayerAttribute.EquipDenfense;
+        GlobaPlayerAttribute.TotalGoodFortune = GlobaPlayerAttribute.PlayerGoodFortune + GlobaPlayerAttribute.EquipGoodFortune;
     }
 
     

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    private int _playerSpeed = 3;
+    private int _playerSpeed = GlobaPlayerAttribute.PlayerMoveSpeed;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public GunBase currentGun;
