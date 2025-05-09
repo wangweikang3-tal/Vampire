@@ -10,6 +10,10 @@ public class BagController : XSingleton<BagController>
     [NonSerialized]public GameObject bagGrid;
     [NonSerialized]public GameObject bag;
     [NonSerialized] public GameObject MaskLayer;
+    [NonSerialized] public bool IsShowPlayerPanel = true;
+    [NonSerialized] public GameObject PlayerPanel ;
+    [NonSerialized] public GameObject AttributePanel ;
+
 
 
     protected override void Awake()
@@ -17,6 +21,24 @@ public class BagController : XSingleton<BagController>
         bag=Instantiate(Resources.Load("Prefabs/Window/Bag"),GameObject.Find("UIRoot").transform).GameObject();
         bag.gameObject.SetActive(false);
         bagGrid = Resources.Load("Prefabs/Equip/BagGrid")as GameObject;
+        PlayerPanel=bag.transform.Find("BagPanel").Find("PlayerPanel").gameObject;
+        AttributePanel=bag.transform.Find("BagPanel").Find("AttributePanel").gameObject;
+
+    }
+
+    public void ShowPlayerPanel()
+    {
+        IsShowPlayerPanel = true;
+        PlayerPanel.gameObject.SetActive(true);
+        AttributePanel.gameObject.SetActive(false);
+
+    }
+
+    public void ShowAttributePanel()
+    {
+        IsShowPlayerPanel = false;
+        PlayerPanel.gameObject.SetActive(false);
+        AttributePanel.gameObject.SetActive(true);
     }
     
     public void CreateMaskLayer()

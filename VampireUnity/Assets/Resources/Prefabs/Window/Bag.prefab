@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &284674927403687107
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6549,6 +6549,7 @@ GameObject:
   - component: {fileID: 9140858924922175253}
   - component: {fileID: 5229168999683781768}
   - component: {fileID: 5766337732733923807}
+  - component: {fileID: 6561868093983431648}
   m_Layer: 5
   m_Name: Bag
   m_TagString: Untagged
@@ -6640,6 +6641,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6561868093983431648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6997200507944021627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c61d14f3de180424591fc557c44bd10a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerButton: {fileID: 1722939786635414077}
+  attributeButton: {fileID: 1360652130187457036}
 --- !u!1 &7004586953575547522
 GameObject:
   m_ObjectHideFlags: 0
