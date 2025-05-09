@@ -21,6 +21,7 @@ public class BagGrid : MonoBehaviour
             //显示装备属性面板
             EquipTable equipTable = EquipController.S.GetEquipAttributeFromMysql(EquipId);
             GameObject equipAttribute=Instantiate(Resources.Load<GameObject>("Prefabs/Equip/EquipAttribute"), BagController.S.transform);
+            equipAttribute.GetComponent<EquipAttributePanel>().CurrentequipId = EquipId;//当前装备ID传给属性面板
             GameObject equipAttributeEquip=equipAttribute.transform.Find("EquipAttributeEquip").gameObject;
             GameObject equipAttributeEquipImage=equipAttributeEquip.transform.Find("EquipAttributeEquipImage").gameObject;
             equipAttributeEquipImage.GetComponent<Image>().sprite = equipAttributeImage;

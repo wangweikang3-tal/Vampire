@@ -19,4 +19,5 @@ public class BagPanel : MonoBehaviour
             BagController.S.ShowAttributePanel();
         });
     }
+    
 }

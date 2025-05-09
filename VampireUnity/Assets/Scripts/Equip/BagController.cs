@@ -6,13 +6,25 @@ using UnityEngine.UI;
 
 public class BagController : XSingleton<BagController>
 {
-    [NonSerialized]public Dictionary<int, Sprite> EquipidDic = new Dictionary<int, Sprite>();
-    [NonSerialized]public GameObject bagGrid;
-    [NonSerialized]public GameObject bag;
-    [NonSerialized] public GameObject MaskLayer;
+    [NonSerialized]public Dictionary<int, Sprite> EquipidDic = new Dictionary<int, Sprite>();//背包里所有的装备
+    [NonSerialized]public GameObject bagGrid;//背包格子
+    [NonSerialized]public GameObject bag;//背包
+    [NonSerialized] public GameObject MaskLayer;//蒙层
     [NonSerialized] public bool IsShowPlayerPanel = true;
-    [NonSerialized] public GameObject PlayerPanel ;
-    [NonSerialized] public GameObject AttributePanel ;
+    [NonSerialized] public GameObject PlayerPanel ;//玩家面板
+    [NonSerialized] public GameObject AttributePanel ;//属性面板
+    public GameObject playerCloth;//玩家面板的衣服
+    public GameObject playerCloak; //玩家面板的披风
+    public GameObject playerRing;
+    public GameObject playerNecklace;
+    public GameObject playerShoe;
+    public GameObject playerHelmet;
+    [NonSerialized] private bool IsInstallCloth = false;//是否穿了衣服
+    [NonSerialized] private bool IsInstallCloak = false;
+    [NonSerialized] private bool IsInstallRing = false;
+    [NonSerialized] private bool IsInstallNecklace = false;
+    [NonSerialized] private bool IsInstallShoe = false;
+    [NonSerialized] private bool IsInstallHelmet = false;
 
 
 
@@ -23,9 +35,17 @@ public class BagController : XSingleton<BagController>
         bagGrid = Resources.Load("Prefabs/Equip/BagGrid")as GameObject;
         PlayerPanel=bag.transform.Find("BagPanel").Find("PlayerPanel").gameObject;
         AttributePanel=bag.transform.Find("BagPanel").Find("AttributePanel").gameObject;
-
+        playerCloth=bag.transform.Find("BagPanel").Find("PlayerPanel").Find("Cloth").gameObject;
+        playerCloak=bag.transform.Find("BagPanel").Find("PlayerPanel").Find("Cloak").gameObject;
+        playerRing=bag.transform.Find("BagPanel").Find("PlayerPanel").Find("Ring").gameObject;
+        playerNecklace=bag.transform.Find("BagPanel").Find("PlayerPanel").Find("Necklace").gameObject;
+        playerShoe=bag.transform.Find("BagPanel").Find("PlayerPanel").Find("Shoe").gameObject;
+        playerHelmet=bag.transform.Find("BagPanel").Find("PlayerPanel").Find("Helmet").gameObject;
     }
 
+    /// <summary>
+    /// 显示玩家面板
+    /// </summary>
     public void ShowPlayerPanel()
     {
         IsShowPlayerPanel = true;
@@ -34,24 +54,35 @@ public class BagController : XSingleton<BagController>
 
     }
 
+    /// <summary>
+    /// 显示属性面板
+    /// </summary>
     public void ShowAttributePanel()
     {
         IsShowPlayerPanel = false;
         PlayerPanel.gameObject.SetActive(false);
         AttributePanel.gameObject.SetActive(true);
     }
-    
+    /// <summary>
+    /// 生成蒙层
+    /// </summary>
     public void CreateMaskLayer()
     {
         MaskLayer= Instantiate(Resources.Load<GameObject>("Prefabs/Equip/MaskLayer"), transform);
     }
 
+    /// <summary>
+    /// 销毁蒙层
+    /// </summary>
     public void DestroyMaskLayer()
     {
         Destroy(MaskLayer);
     }
 
 
+    /// <summary>
+    /// 显示背包的装备
+    /// </summary>
     public void ShowEquip()
     {
         GameObject equipContent = UITool.S.GetChildGameObject("EquipContent");
@@ -69,6 +100,9 @@ public class BagController : XSingleton<BagController>
         }
     }
 
+    /// <summary>
+    /// 打开背包面板
+    /// </summary>
     public void ShowBag()
     {
         //暂停游戏
@@ -77,16 +111,97 @@ public class BagController : XSingleton<BagController>
         ShowEquip();
     }
 
+    /// <summary>
+    /// 隐藏背包面板
+    /// </summary>
     public void HideBag()
     {
         //暂停游戏
         Time.timeScale = 1;
         bag.gameObject.SetActive(false);
     }
-    
 
-    public void AddEquip(EquipBase equip)
+    
+    /// <summary>
+    /// 装装备
+    /// </summary>
+    /// <param name="equipId"></param>
+    public void InstallCloth(int equipId)
     {
-        var equiptemp=new EquipBase(equip.equipName,equip.EquipAttributes);
+        IsInstallCloth = true;
+        playerCloth.transform.Find("Image").gameObject.SetActive(true);
+        playerCloth.transform.Find("Image").GetComponent<Image>().sprite = EquipidDic[equipId];
     }
+    public void InstallCloak(int equipId)
+    {
+        IsInstallCloak = true;
+        playerCloak.transform.Find("Image").gameObject.SetActive(true);
+        playerCloak.transform.Find("Image").GetComponent<Image>().sprite = EquipidDic[equipId];
+    }
+    public void InstallRing(int equipId)
+    {
+        IsInstallRing = true;
+        playerRing.transform.Find("Image").gameObject.SetActive(true);
+        playerRing.transform.Find("Image").GetComponent<Image>().sprite = EquipidDic[equipId];
+    }
+    public void InstallNecklace(int equipId)
+    {
+        IsInstallNecklace = true;
+        playerNecklace.transform.Find("Image").gameObject.SetActive(true);
+        playerNecklace.transform.Find("Image").GetComponent<Image>().sprite = EquipidDic[equipId];
+    }
+    public void InstallShoe(int equipId)
+    {
+        IsInstallShoe = true;
+        playerShoe.transform.Find("Image").gameObject.SetActive(true);
+        playerShoe.transform.Find("Image").GetComponent<Image>().sprite = EquipidDic[equipId];
+    }
+    public void InstallHelmet(int equipId)
+    {
+        IsInstallHelmet = true;
+        playerHelmet.transform.Find("Image").gameObject.SetActive(true);
+        playerHelmet.transform.Find("Image").GetComponent<Image>().sprite = EquipidDic[equipId];
+    }
+    /// <summary>
+    /// 卸装备
+    /// </summary>
+    public void UnInstallCloth()
+    {
+        IsInstallCloth = false;
+        playerCloth.transform.Find("Image").gameObject.SetActive(false);
+        playerCloth.transform.Find("Image").GetComponent<Image>().sprite = null;
+    }
+    public void UnInstallCloak()
+    {
+        IsInstallCloak = false;
+        playerCloak.transform.Find("Image").gameObject.SetActive(false);
+        playerCloak.transform.Find("Image").GetComponent<Image>().sprite = null;
+    }
+    public void UnInstallRing()
+    {
+        IsInstallRing = false;
+        playerRing.transform.Find("Image").gameObject.SetActive(false);
+        playerRing.transform.Find("Image").GetComponent<Image>().sprite = null;
+    }
+    public void UnInstallNecklace()
+    {
+        IsInstallNecklace = false;
+        playerNecklace.transform.Find("Image").gameObject.SetActive(false);
+        playerNecklace.transform.Find("Image").GetComponent<Image>().sprite = null;
+    }
+    public void UnInstallShoe()
+    {
+        IsInstallShoe = false;
+        playerShoe.transform.Find("Image").gameObject.SetActive(false);
+        playerShoe.transform.Find("Image").GetComponent<Image>().sprite = null;
+    }
+    public void UnInstallHelmet()
+    {
+        IsInstallHelmet = false;
+        playerHelmet.transform.Find("Image").gameObject.SetActive(false);
+        playerHelmet.transform.Find("Image").GetComponent<Image>().sprite = null;
+    }
+    
+    
+    
 }
