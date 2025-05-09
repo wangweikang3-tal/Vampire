@@ -135,7 +135,7 @@ public class BagController : XSingleton<BagController>
         IsInstallCloth = true;
         playerCloth.transform.Find("Image").gameObject.SetActive(true);
         playerCloth.transform.Find("Image").GetComponent<Button>().image.sprite = EquipidDic[equipId];
-        playerCloth.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() => { Debug.Log("1111"); });
+        playerCloth.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() => { ShowEquipAttributePanel(equipId); });
     }
 
     public void InstallCloak(int equipId)
@@ -143,7 +143,7 @@ public class BagController : XSingleton<BagController>
         IsInstallCloak = true;
         playerCloak.transform.Find("Image").gameObject.SetActive(true);
         playerCloak.transform.Find("Image").GetComponent<Button>().image.sprite = EquipidDic[equipId];
-        playerCloak.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() => { Debug.Log("2222"); });
+        playerCloak.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() => { ShowEquipAttributePanel(equipId); });
     }
 
     public void InstallRing(int equipId)
@@ -151,7 +151,7 @@ public class BagController : XSingleton<BagController>
         IsInstallRing = true;
         playerRing.transform.Find("Image").gameObject.SetActive(true);
         playerRing.transform.Find("Image").GetComponent<Button>().image.sprite = EquipidDic[equipId];
-        playerRing.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() => { Debug.Log("3333"); });
+        playerRing.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() => { ShowEquipAttributePanel(equipId); });
     }
 
     public void InstallNecklace(int equipId)
@@ -159,7 +159,7 @@ public class BagController : XSingleton<BagController>
         IsInstallNecklace = true;
         playerNecklace.transform.Find("Image").gameObject.SetActive(true);
         playerNecklace.transform.Find("Image").GetComponent<Button>().image.sprite = EquipidDic[equipId];
-        playerNecklace.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() => { Debug.Log("4444"); });
+        playerNecklace.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() => { ShowEquipAttributePanel(equipId); });
     }
 
     public void InstallShoe(int equipId)
@@ -167,7 +167,7 @@ public class BagController : XSingleton<BagController>
         IsInstallShoe = true;
         playerShoe.transform.Find("Image").gameObject.SetActive(true);
         playerShoe.transform.Find("Image").GetComponent<Button>().image.sprite = EquipidDic[equipId];
-        playerShoe.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() => { Debug.Log("5555"); });
+        playerShoe.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() => { ShowEquipAttributePanel(equipId); });
     }
 
     public void InstallHelmet(int equipId)
@@ -175,7 +175,7 @@ public class BagController : XSingleton<BagController>
         IsInstallHelmet = true;
         playerHelmet.transform.Find("Image").gameObject.SetActive(true);
         playerHelmet.transform.Find("Image").GetComponent<Button>().image.sprite = EquipidDic[equipId];
-        playerHelmet.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() => { Debug.Log("6666"); });
+        playerHelmet.transform.Find("Image").GetComponent<Button>().onClick.AddListener(() => { ShowEquipAttributePanel(equipId);});
     }
 
     /// <summary>
