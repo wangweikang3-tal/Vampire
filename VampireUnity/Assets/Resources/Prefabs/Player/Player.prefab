@@ -660,6 +660,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rage
       objectReference: {fileID: 0}
+    - target: {fileID: 1484010689019130605, guid: ad285f8d9dcac41c09d55187c6513e4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3829027533946446377, guid: ad285f8d9dcac41c09d55187c6513e4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.65
