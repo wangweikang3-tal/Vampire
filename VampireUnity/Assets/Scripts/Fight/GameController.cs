@@ -8,6 +8,7 @@ public class GameController : XSingleton<GameController>
     public Player gamePlayer;
     public GameObject monsterBirthPoint;
     public SnotMonster snotMonster;
+    public EliteSnotMonster eliteSnotMonster;
     public float monsterBirthTimeScale = 1f; //间隔一秒钟生成一个怪物
     public float currentTime = 0f;
     public GameObject fightBG;
@@ -36,6 +37,7 @@ public class GameController : XSingleton<GameController>
         monsterBirthPoint = Instantiate(Resources.Load<GameObject>("Prefabs/Tool/MonsterBirthPoint"), transform);
         monsterBirthPoint.transform.position = new Vector3(0, 0, 0f);
         snotMonster = Resources.Load<GameObject>("Prefabs/Monster/SnotMonster").GetComponent<SnotMonster>();
+        eliteSnotMonster = Resources.Load<GameObject>("Prefabs/Monster/EliteSnotMonster").GetComponent<EliteSnotMonster>();
         monsterBirthPoints=monsterBirthPoint.GetComponentsInChildren<Transform>();
         monsterDetetor1 = new List<MonsterBase>();
         monsterDetetor2 = new List<MonsterBase>();
@@ -55,13 +57,27 @@ public class GameController : XSingleton<GameController>
         //获取随机选择的子物体    
         Transform randomPoint = monsterBirthPoints[randomIndex];
         //生成怪物
-        GameObject monster = Instantiate(snotMonster.gameObject, randomPoint.position, Quaternion.identity);
+        GameObject monster;
+        Debug.Log(Time.frameCount);
+        if (Time.frameCount % 10 == 0)
+        {
+            monster = Instantiate(eliteSnotMonster.gameObject, randomPoint.position, Quaternion.identity);
+        }
+        else
+        {
+            monster = Instantiate(snotMonster.gameObject, randomPoint.position, Quaternion.identity);
+        }
         MonsterBase monsterBase = monster.GetComponent<MonsterBase>();
         monsterBase.CurrentHp=monsterBase.MaxHp;
         monster.transform.SetParent(monsterBirthPoints[randomIndex]);
         //生成怪物血条
         GameObject monsterHpBar = Instantiate(monsterHpSliderPrefabs.gameObject, monster.transform);
         Slider monsterHpSlider = monsterHpBar.transform.Find("Canvas/MonsterHPSlider").GetComponent<Slider>();
+        if (monsterBase.MonsterType == MonsterType.Elite)
+        {
+            monsterHpBar.transform.localScale= new Vector3(0.004f, 0.004f, 0.004f);
+            monsterHpBar.transform.position = new Vector3(monsterHpBar.transform.position.x, monsterHpBar.transform.position.y + 0.4f, monsterHpBar.transform.position.z-0.1f);
+        }
         monsterBase.hpSlider = monsterHpSlider;
         monsterHpBar.transform.position = new Vector3(monsterHpBar.transform.position.x, monsterHpBar.transform.position.y + 0.2f, monsterHpBar.transform.position.z-0.1f);
 
