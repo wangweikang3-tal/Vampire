@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 1958445205842613930}
   - component: {fileID: 2311549192726080326}
   - component: {fileID: 5885500989633798258}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EliteSnotMonster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
