@@ -31,7 +31,7 @@ public abstract class MonsterBase : MonoBehaviour
     public Animator monsterAnimator;
     public GameObject monsterHurtText;
     public Slider hpSlider;
-    public List<MonsterEquip> MonsterEquipList ;//怪物装备列表
+    public List<MonsterEquip> MonsterEquipList=new List<MonsterEquip>() ;//怪物装备列表
 
     //构造方法
     public MonsterBase(MonsterType monsterType, string monsterName, int monsterLevel, int maxHp, float speed, int attack, int defense, int exp, int bloodEnergy, int evolutionEnergy)

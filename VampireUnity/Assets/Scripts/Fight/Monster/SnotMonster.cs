@@ -10,7 +10,6 @@ public class SnotMonster : MonsterBase
 
     private void Start()
     {
-        MonsterEquipList = new List<MonsterEquip>();
         AddMonsterEquip();
     }
 
