@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
-    private int _playerSpeed = GlobaPlayerAttribute.PlayerMoveSpeed;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public GunBase currentGun;
@@ -46,7 +44,7 @@ public class Player : MonoBehaviour
         //刚体移动角色
         Vector3 direction = new Vector3(horizontal, vertical, 0);
         //刚体移动
-        GetComponent<Rigidbody2D>().linearVelocity = direction.normalized * _playerSpeed;
+        GetComponent<Rigidbody2D>().linearVelocity = direction.normalized * GlobalPlayerAttribute.PlayerMoveSpeed;
         if (horizontal < 0)
         {
             //翻转Sprite
@@ -67,11 +65,6 @@ public class Player : MonoBehaviour
         if (transform.position.y > 7.5f)
             transform.position = new Vector3(transform.position.x, 7.5f, transform.position.z);
             
-    }
-    
-    public void SetSpeed(int speed)
-    {
-        _playerSpeed = speed;
     }
     
     public void SetGunRotate(Vector3 nearMonsterPosition)

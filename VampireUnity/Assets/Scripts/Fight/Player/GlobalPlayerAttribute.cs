@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GlobaPlayerAttribute 
+public class GlobalPlayerAttribute 
 {
    public static int CurrentHp=100;
    

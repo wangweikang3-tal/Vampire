@@ -29,15 +29,15 @@ public class BagPanel : MonoBehaviour
         {
             BagController.S.ComputeTotalAttribute();
             BagController.S.ShowAttributePanel();
-            playerDamageAttributeText.text=GlobaPlayerAttribute.TotalDamage.ToString();
-            playerHPAttributeText.text=GlobaPlayerAttribute.TotalMaxHp.ToString();
-            playerDefenseAttributeText.text=GlobaPlayerAttribute.TotalDenfense.ToString();
-            playerCRITAttributeText.text=GlobaPlayerAttribute.TotalCRIT.ToString();
-            playerCRITDamageAttributeText.text=GlobaPlayerAttribute.TotalCRITDamage.ToString();
-            playerMoveSpeedAttributeText.text=GlobaPlayerAttribute.TotalMoveSpeed.ToString();
-            playerAttackSpeedAttributeText.text=GlobaPlayerAttribute.TotalAttackSpeed.ToString();
-            playerGoodfortuneAttributeText.text=GlobaPlayerAttribute.TotalGoodFortune.ToString();
-            playerBloodSuckAttributeText.text=GlobaPlayerAttribute.TotalBloodSuck.ToString();
+            playerDamageAttributeText.text=GlobalPlayerAttribute.TotalDamage.ToString();
+            playerHPAttributeText.text=GlobalPlayerAttribute.TotalMaxHp.ToString();
+            playerDefenseAttributeText.text=GlobalPlayerAttribute.TotalDenfense.ToString();
+            playerCRITAttributeText.text=GlobalPlayerAttribute.TotalCRIT.ToString();
+            playerCRITDamageAttributeText.text=GlobalPlayerAttribute.TotalCRITDamage.ToString();
+            playerMoveSpeedAttributeText.text=GlobalPlayerAttribute.TotalMoveSpeed.ToString();
+            playerAttackSpeedAttributeText.text=GlobalPlayerAttribute.TotalAttackSpeed.ToString();
+            playerGoodfortuneAttributeText.text=GlobalPlayerAttribute.TotalGoodFortune.ToString();
+            playerBloodSuckAttributeText.text=GlobalPlayerAttribute.TotalBloodSuck.ToString();
         });
     }
     

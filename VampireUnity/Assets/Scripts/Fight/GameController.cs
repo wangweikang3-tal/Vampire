@@ -27,6 +27,7 @@ public class GameController : XSingleton<GameController>
 
     private void Awake()
     {
+        var _ = SkillController.S;//激活SkillController
         Application.targetFrameRate = 30;
         gamePlayer = Instantiate(Resources.Load<GameObject>("Prefabs/Player/Player"), transform).GetComponent<Player>();
         fightBG=Instantiate(Resources.Load<GameObject>("Prefabs/Window/FightBG"), transform);
