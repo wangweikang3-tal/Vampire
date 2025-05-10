@@ -85,5 +85,14 @@ public class Player : MonoBehaviour
         }
         currentGun.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
+
+    /// <summary>
+    /// 主角受伤
+    /// </summary>
+    /// <param name="damage"></param>
+    public void PlayerHurt(int damage)
+    {
+        
+    }
     
 }
