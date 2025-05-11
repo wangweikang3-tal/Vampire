@@ -90,8 +90,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6192856406626698102}
-  - component: {fileID: 5698864392562082608}
   - component: {fileID: 5324544419505901208}
+  - component: {fileID: 7877987383675853050}
   m_Layer: 0
   m_Name: MonsterDetetor1
   m_TagString: Untagged
@@ -114,8 +114,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2792924234495846014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &5698864392562082608
-BoxCollider2D:
+--- !u!114 &5324544419505901208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103007844057440723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0211d0e6bf4cd4fbab9761c7335f2f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &7877987383675853050
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -148,30 +160,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.9383869, y: 0.54999495}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 40.11983, y: 30.45153}
-  m_EdgeRadius: 0
---- !u!114 &5324544419505901208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103007844057440723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0211d0e6bf4cd4fbab9761c7335f2f96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Offset: {x: -0.15245676, y: 0}
+  m_Radius: 20.129354
 --- !u!1 &1957216915406627755
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,8 +258,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3500418468340236640}
-  - component: {fileID: 6945624430656843205}
   - component: {fileID: 7005823720511069718}
+  - component: {fileID: 8536175372411314353}
   m_Layer: 0
   m_Name: MonsterDetetor3
   m_TagString: Untagged
@@ -292,8 +282,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2792924234495846014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &6945624430656843205
-BoxCollider2D:
+--- !u!114 &7005823720511069718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3050038718569854612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9646ac206bd4f4eda83639d4aa88a1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &8536175372411314353
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -326,30 +328,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.15636444, y: -0.20591545}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 134.33864, y: 77.578}
-  m_EdgeRadius: 0
---- !u!114 &7005823720511069718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3050038718569854612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9646ac206bd4f4eda83639d4aa88a1a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Offset: {x: -0.05445957, y: 0}
+  m_Radius: 39.74059
 --- !u!1 &4671334078454996759
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,8 +339,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2987882126026395680}
-  - component: {fileID: 5749535970057772617}
   - component: {fileID: 2063106278658240484}
+  - component: {fileID: 5216057363103112403}
   m_Layer: 0
   m_Name: MonsterDetetor2
   m_TagString: Untagged
@@ -383,8 +363,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2792924234495846014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &5749535970057772617
-BoxCollider2D:
+--- !u!114 &2063106278658240484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671334078454996759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9dc69a4910b74cf6b051b3871c66d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &5216057363103112403
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -417,30 +409,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.36227798, y: -0.82366085}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 92.743904, y: 53.28009}
-  m_EdgeRadius: 0
---- !u!114 &2063106278658240484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4671334078454996759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9dc69a4910b74cf6b051b3871c66d5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Offset: {x: -0.2118206, y: 0}
+  m_Radius: 30.156002
 --- !u!1 &9145328470554279404
 GameObject:
   m_ObjectHideFlags: 0
