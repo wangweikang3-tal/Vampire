@@ -58,7 +58,6 @@ public class GameController : XSingleton<GameController>
         Transform randomPoint = monsterBirthPoints[randomIndex];
         //生成怪物
         GameObject monster;
-        Debug.Log(Time.frameCount);
         if (Time.frameCount % 10 == 0)
         {
             monster = Instantiate(eliteSnotMonster.gameObject, randomPoint.position, Quaternion.identity);
