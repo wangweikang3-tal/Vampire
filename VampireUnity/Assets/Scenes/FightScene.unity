@@ -406,12 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3ad7342586b4c7397541c79973501e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryCloak: {fileID: -3533037950856598361, guid: b3c81fa59e219437abf78be0e5063dff, type: 3}
-  primaryCloth: {fileID: 21300000, guid: fc19eb998095045208d17e8f86ec3681, type: 3}
-  primaryRing: {fileID: 21300000, guid: bffa7b0ac94ec4614988c70476e1864f, type: 3}
-  primaryNecklace: {fileID: 21300000, guid: ec3f1936b7dd44c17939af8509129a82, type: 3}
-  primaryShoe: {fileID: 21300000, guid: ce43669e1eb784c20825498b47d6cd04, type: 3}
-  primaryHelmet: {fileID: 21300000, guid: 4331370f87144477ebe1fbcea30e5a15, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

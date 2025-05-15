@@ -6,7 +6,9 @@ public class VacantEye : MonsterBase
 {
     [NonSerialized]public VacantEyeBullet VacantEyeBullet;
     public VacantEye() : base(MonsterType.Boss, "VacantEye", 1, 10000, 0.3f, 20, 5, 50, 10, 100) { }
-    
+    [NonSerialized] public float SkillTime = 10;
+    [NonSerialized] public float CurrentSkillTime = 0;
+     public GameObject LaserObject;
     public override void AddMonsterEquip()
     {
         MonsterEquipList.Add(new MonsterEquip("PrimaryClothFight", 10));
@@ -19,7 +21,7 @@ public class VacantEye : MonsterBase
 
     public void ShotBullet()
     {
-        //向四周发射vacantEyeBullet，发射8颗
+        //向四周发射vacantEyeBullet，发射12颗
         for (int i = 0; i < 12; i++)
         {
             float angle = i * 30f;
@@ -28,7 +30,23 @@ public class VacantEye : MonsterBase
             bullet.GetComponent<VacantEyeBullet>().SetDirection(direction);
             bullet.gameObject.SetActive(true);
         }
-    }   
+    }
+
+    public void SetAnimator()
+    {
+        monsterAnimator.SetBool("isAttack", true);
+    }
+    //动画事件
+    public void ShotLaserSkill()
+    {
+        LaserObject.gameObject.SetActive(true);
+    }
+    //动画事件
+    public void StopLaserSkill()
+    {
+        LaserObject.gameObject.SetActive(false);
+        monsterAnimator.SetBool("isAttack", false);
+    }
     private void Start()
     {
         VacantEyeBullet=Resources.Load<VacantEyeBullet>("Prefabs/Monster/VacantEyeBullet");
@@ -36,10 +54,25 @@ public class VacantEye : MonsterBase
     }
     void Update()
     {
+        CurrentSkillTime+= Time.deltaTime;
+        if (CurrentSkillTime >= SkillTime)
+        {
+            SetAnimator();
+            CurrentSkillTime = 0;
+        }
         if (!IsDead)
         {
             MonsterMove();
             SpriteFlipX(false);
+        }
+        LaserObject.GetComponent<SpriteRenderer>().flipX=monsterSpriteRenderer.flipX;
+        if (!LaserObject.GetComponent<SpriteRenderer>().flipX)
+        {
+            LaserObject.transform.localPosition=new Vector3(-29,0,LaserObject.transform.localPosition.z);
+        }
+        else
+        {
+            LaserObject.transform.localPosition=new Vector3(29,0,LaserObject.transform.localPosition.z);
         }
         //每隔1秒发射一次子弹
         if (Time.frameCount%100==0)
