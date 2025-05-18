@@ -6,7 +6,7 @@ public class SkillController : XSingleton<SkillController>
 {
 
     [NonSerialized]public bool IsDash=false;
-    [NonSerialized] public int ShadowCount = 5;
+    [NonSerialized]public int ShadowCount = 5;
     [NonSerialized]public int CurrentDashCount = 0;
     void Start()
     {
@@ -20,6 +20,14 @@ public class SkillController : XSingleton<SkillController>
         if (Input.GetKeyDown(KeyCode.H))
         {
             IsDash = true;
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            GameController.S.gamePlayer.transform.Find("Shield").gameObject.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            GameController.S.gamePlayer.transform.Find("Rage").gameObject.SetActive(true);
         }
         if (IsDash ==true)
         {
