@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -26,6 +27,8 @@ public class GameController : XSingleton<GameController>
     public GameObject fightTimeTextPrefab;
     public Text fightTimeText;
 
+    [NonSerialized]public int BossEnergy=0;
+    [NonSerialized]public bool HaveBoss=false;
     private void Awake()
     {
         var _ = SkillController.S;//激活SkillController
@@ -84,6 +87,13 @@ public class GameController : XSingleton<GameController>
 
     private void Update()
     {
+        //出现BOSS
+        if (BossEnergy > 10 && HaveBoss==false)
+        {
+            HaveBoss = true;
+            GameObject boss=Instantiate(Resources.Load<GameObject>("Prefabs/Monster/VacantEye"), transform);
+            boss.transform.position = new Vector3(0, 0, 0f);
+        }
         //更新战斗时间,以秒为单位
         fightTime += Time.deltaTime;
         var minute=(int)fightTime/60;

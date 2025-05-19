@@ -100,6 +100,16 @@ public abstract class MonsterBase : MonoBehaviour
 
     public void Die()
     {
+        //增加BOSS能量
+        switch (MonsterType)
+        {
+            case MonsterType.Normal:
+                GameController.S.BossEnergy+= 1;
+                break;
+            case MonsterType.Elite:
+                GameController.S.BossEnergy+= 10;
+                break;
+        }
         //生成装备
         CreateEquip();
         //生成血能
