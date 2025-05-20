@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Equip;
-using UnityEngine;
+
 
 public class SnotMonster : MonsterBase
 {

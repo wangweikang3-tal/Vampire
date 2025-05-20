@@ -27,8 +27,10 @@ public class GameController : XSingleton<GameController>
     public GameObject fightTimeTextPrefab;
     public Text fightTimeText;
 
+    //Boss相关
     [NonSerialized]public int BossEnergy=0;
     [NonSerialized]public bool HaveBoss=false;
+    [NonSerialized]public MonsterBase CurrentBoss;
     private void Awake()
     {
         var _ = SkillController.S;//激活SkillController
@@ -91,8 +93,10 @@ public class GameController : XSingleton<GameController>
         if (BossEnergy > 10 && HaveBoss==false)
         {
             HaveBoss = true;
-            GameObject boss=Instantiate(Resources.Load<GameObject>("Prefabs/Monster/VacantEye"), transform);
-            boss.transform.position = new Vector3(0, 0, 0f);
+            CurrentBoss=Instantiate(Resources.Load<MonsterBase>("Prefabs/Monster/VacantEye"), transform);
+            CurrentBoss.transform.position = new Vector3(0, 0, 0f);
+            GameObject BossHp=Instantiate(Resources.Load<GameObject>("Prefabs/Tool/BOSSHP"), transform);
+            Slider BossHPSlider = BossHp.transform.Find("Canvas/Slider").GetComponent<Slider>();
         }
         //更新战斗时间,以秒为单位
         fightTime += Time.deltaTime;
