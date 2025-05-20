@@ -29,6 +29,10 @@ public class SkillController : XSingleton<SkillController>
         {
             GameController.S.gamePlayer.transform.Find("Rage").gameObject.SetActive(true);
         }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            GameController.S.IceArrow.Play();
+        }
         if (IsDash ==true)
         {
             GlobalPlayerAttribute.PlayerMoveSpeed = 20;

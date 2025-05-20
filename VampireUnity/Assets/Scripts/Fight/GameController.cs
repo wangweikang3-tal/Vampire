@@ -26,7 +26,8 @@ public class GameController : XSingleton<GameController>
     public float fightTime;//秒为单位
     public GameObject fightTimeTextPrefab;
     public Text fightTimeText;
-
+    //技能相关
+    [NonSerialized]public ParticleSystem IceArrow;
     //Boss相关
     [NonSerialized]public int BossEnergy=0;
     [NonSerialized]public bool HaveBoss=false;
@@ -52,7 +53,8 @@ public class GameController : XSingleton<GameController>
         Instantiate(Resources.Load<GameObject>("Prefabs/UI/RoleInfoFight"), transform);
         fightTimeTextPrefab=Instantiate(Resources.Load<GameObject>("Prefabs/UI/FightTime"), transform);
         fightTimeText=fightTimeTextPrefab.transform.Find("Canvas/FightTimeText").GetComponent<Text>();
-
+        //技能相关
+        IceArrow = transform.Find("Player(Clone)/Pistol(Clone)/IceArrow/IceArrowParticleSystem").GetComponent<ParticleSystem>();
     }
 
     private void CreateMonster()
