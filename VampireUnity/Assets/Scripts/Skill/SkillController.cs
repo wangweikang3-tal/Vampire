@@ -32,6 +32,7 @@ public class SkillController : XSingleton<SkillController>
         if (Input.GetKeyDown(KeyCode.U))
         {
             GameController.S.IceArrow.Play();
+            GameController.S.IceArrow.transform.Find("Trail").gameObject.SetActive(true);
         }
         if (IsDash ==true)
         {

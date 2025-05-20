@@ -55,6 +55,7 @@ public class GameController : XSingleton<GameController>
         fightTimeText=fightTimeTextPrefab.transform.Find("Canvas/FightTimeText").GetComponent<Text>();
         //技能相关
         IceArrow = transform.Find("Player(Clone)/Pistol(Clone)/IceArrow/IceArrowParticleSystem").GetComponent<ParticleSystem>();
+        IceArrow.Stop();
     }
 
     private void CreateMonster()
