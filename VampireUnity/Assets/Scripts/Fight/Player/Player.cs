@@ -55,15 +55,15 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = false;
         }
         
-        //限制角色在屏幕内
-        if (transform.position.x < -16f)
-            transform.position = new Vector3(-16f, transform.position.y, transform.position.z);
-        if (transform.position.x > 16f)
-            transform.position = new Vector3(16f, transform.position.y, transform.position.z);
-        if (transform.position.y < -8.5f)
-            transform.position = new Vector3(transform.position.x, -8.5f, transform.position.z);
-        if (transform.position.y > 8.5f)
-            transform.position = new Vector3(transform.position.x, 8.5f, transform.position.z);
+        // //限制角色在屏幕内
+        // if (transform.position.x < -16f)
+        //     transform.position = new Vector3(-16f, transform.position.y, transform.position.z);
+        // if (transform.position.x > 16f)
+        //     transform.position = new Vector3(16f, transform.position.y, transform.position.z);
+        // if (transform.position.y < -8.5f)
+        //     transform.position = new Vector3(transform.position.x, -8.5f, transform.position.z);
+        // if (transform.position.y > 8.5f)
+        //     transform.position = new Vector3(transform.position.x, 8.5f, transform.position.z);
             
     }
     

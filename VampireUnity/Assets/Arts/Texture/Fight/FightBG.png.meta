@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: aae4ff9efb6004b8b8ff30b9c39ca68d
+guid: 4df8537b4ca684aec8fee35f6c206ba2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8168638880315551705
-    second: Fight_0
+      213: -7857524798435361101
+    second: FightBG_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fight_0
+      name: FightBG_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 720d858b73a23ae80800000000000000
-      internalID: -8168638880315551705
+      spriteID: 3beff67a3d674f290800000000000000
+      internalID: -7857524798435361101
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fight_0: -8168638880315551705
+      FightBG_0: -7857524798435361101
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

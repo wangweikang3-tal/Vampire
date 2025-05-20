@@ -6,14 +6,16 @@ using UnityEngine.UI;
 
 public class GameController : XSingleton<GameController>
 {
-    public Player gamePlayer;
-    public GameObject monsterBirthPoint;
+    [NonSerialized]public Player gamePlayer;
+    [NonSerialized]public GameObject MonsterBirthPoint;
+    [NonSerialized]public GameObject PlayerBirthPoint;
     public SnotMonster snotMonster;
     public EliteSnotMonster eliteSnotMonster;
     public float monsterBirthTimeScale = 1f; //间隔一秒钟生成一个怪物
     public float currentTime = 0f;
     public GameObject fightBG;
-    public Transform[] monsterBirthPoints;
+    [NonSerialized]public Transform[] MonsterBirthPoints;
+    [NonSerialized]public Transform[] PlayerBirthPoints;
     //怪物探测器，检测最近的怪物
     public List<MonsterBase> monsterDetetor1 ;
     public List<MonsterBase> monsterDetetor2 ;
@@ -26,8 +28,6 @@ public class GameController : XSingleton<GameController>
     public float fightTime;//秒为单位
     public GameObject fightTimeTextPrefab;
     public Text fightTimeText;
-    //技能相关
-    [NonSerialized]public ParticleSystem IceArrow;
     //Boss相关
     [NonSerialized]public int BossEnergy=0;
     [NonSerialized]public bool HaveBoss=false;
@@ -36,15 +36,17 @@ public class GameController : XSingleton<GameController>
     {
         var _ = SkillController.S;//激活SkillController
         Application.targetFrameRate = 30;
-        gamePlayer = Instantiate(Resources.Load<GameObject>("Prefabs/Player/Player"), transform).GetComponent<Player>();
+        MonsterBirthPoint = Instantiate(Resources.Load<GameObject>("Prefabs/Tool/MonsterBirthPoint"), transform);
+        PlayerBirthPoint= Instantiate(Resources.Load<GameObject>("Prefabs/Tool/PlayerBirthPoint"), transform);
+        MonsterBirthPoints=MonsterBirthPoint.GetComponentsInChildren<Transform>();
+        PlayerBirthPoints=PlayerBirthPoint.GetComponentsInChildren<Transform>();
+        CreatePlayer();
         fightBG=Instantiate(Resources.Load<GameObject>("Prefabs/Window/FightBG"), transform);
         fightBG.transform.position = new Vector3(0, 0, 0.1f);
-        gamePlayer.transform.position = new Vector3(0, 0, 0f);
-        monsterBirthPoint = Instantiate(Resources.Load<GameObject>("Prefabs/Tool/MonsterBirthPoint"), transform);
-        monsterBirthPoint.transform.position = new Vector3(0, 0, 0f);
+        MonsterBirthPoint.transform.position = new Vector3(0, 0, 0f);
+        PlayerBirthPoint.transform.position = new Vector3(0, 0, 0f);
         snotMonster = Resources.Load<GameObject>("Prefabs/Monster/SnotMonster").GetComponent<SnotMonster>();
         eliteSnotMonster = Resources.Load<GameObject>("Prefabs/Monster/EliteSnotMonster").GetComponent<EliteSnotMonster>();
-        monsterBirthPoints=monsterBirthPoint.GetComponentsInChildren<Transform>();
         monsterDetetor1 = new List<MonsterBase>();
         monsterDetetor2 = new List<MonsterBase>();
         monsterDetetor3 = new List<MonsterBase>();
@@ -53,30 +55,37 @@ public class GameController : XSingleton<GameController>
         Instantiate(Resources.Load<GameObject>("Prefabs/UI/RoleInfoFight"), transform);
         fightTimeTextPrefab=Instantiate(Resources.Load<GameObject>("Prefabs/UI/FightTime"), transform);
         fightTimeText=fightTimeTextPrefab.transform.Find("Canvas/FightTimeText").GetComponent<Text>();
-        //技能相关
-        IceArrow = transform.Find("Player(Clone)/Pistol(Clone)/IceArrow/IceArrowParticleSystem").GetComponent<ParticleSystem>();
-        IceArrow.Stop();
+        
+    }
+
+    private void CreatePlayer()
+    {
+        int playerRandomIndex = UnityEngine.Random.Range(1, PlayerBirthPoints.Length);
+        //获取随机选择的子物体    
+        Transform playerRandomPoint = PlayerBirthPoints[playerRandomIndex];
+        gamePlayer = Instantiate(Resources.Load<GameObject>("Prefabs/Player/Player"), transform).GetComponent<Player>();
+        gamePlayer.transform.position = playerRandomPoint.position;
     }
 
     private void CreateMonster()
     {
         //从子物体里随机选择一个
-        int randomIndex = UnityEngine.Random.Range(1, monsterBirthPoints.Length);
+        int monsterRandomIndex = UnityEngine.Random.Range(1, MonsterBirthPoints.Length);
         //获取随机选择的子物体    
-        Transform randomPoint = monsterBirthPoints[randomIndex];
+        Transform monsterRandomPoint = MonsterBirthPoints[monsterRandomIndex];
         //生成怪物
         GameObject monster;
         if (Time.frameCount % 10 == 0)
         {
-            monster = Instantiate(eliteSnotMonster.gameObject, randomPoint.position, Quaternion.identity);
+            monster = Instantiate(eliteSnotMonster.gameObject, monsterRandomPoint.position, Quaternion.identity);
         }
         else
         {
-            monster = Instantiate(snotMonster.gameObject, randomPoint.position, Quaternion.identity);
+            monster = Instantiate(snotMonster.gameObject, monsterRandomPoint.position, Quaternion.identity);
         }
         MonsterBase monsterBase = monster.GetComponent<MonsterBase>();
         monsterBase.CurrentHp=monsterBase.MaxHp;
-        monster.transform.SetParent(monsterBirthPoints[randomIndex]);
+        monster.transform.SetParent(MonsterBirthPoints[monsterRandomIndex]);
         //生成怪物血条
         GameObject monsterHpBar = Instantiate(monsterHpSliderPrefabs.gameObject, monster.transform);
         Slider monsterHpSlider = monsterHpBar.transform.Find("Canvas/MonsterHPSlider").GetComponent<Slider>();

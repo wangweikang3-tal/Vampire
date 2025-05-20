@@ -8,9 +8,16 @@ public class SkillController : XSingleton<SkillController>
     [NonSerialized]public bool IsDash=false;
     [NonSerialized]public int ShadowCount = 5;
     [NonSerialized]public int CurrentDashCount = 0;
+    //技能相关
+    [NonSerialized]public ParticleSystem IceArrow;
+    [NonSerialized]public ParticleSystem NormalAttack;
     void Start()
     {
-        
+        //技能相关
+        IceArrow = GameController.S.transform.Find("Player(Clone)/Pistol(Clone)/IceArrow/IceArrowParticleSystem").GetComponent<ParticleSystem>();
+        IceArrow.Stop();
+        NormalAttack= GameController.S.transform.Find("Player(Clone)/Pistol(Clone)/NormalAttack").GetComponent<ParticleSystem>();
+        NormalAttack.Stop();
     }
 
     // Update is called once per frame
@@ -31,8 +38,8 @@ public class SkillController : XSingleton<SkillController>
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            GameController.S.IceArrow.Play();
-            GameController.S.IceArrow.transform.Find("Trail").gameObject.SetActive(true);
+           IceArrow.Play();
+           IceArrow.transform.Find("Trail").gameObject.SetActive(true);
         }
         if (IsDash ==true)
         {
