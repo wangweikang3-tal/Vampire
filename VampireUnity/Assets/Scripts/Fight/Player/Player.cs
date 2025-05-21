@@ -96,6 +96,14 @@ public class Player : MonoBehaviour
         }
         if (joydir == Vector2.zero)//设置pc和安卓的移动
         {
+            if(horizontal>0)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if(horizontal<0)
+            {
+                spriteRenderer.flipX = true;
+            }
             GetComponent<Rigidbody2D>().linearVelocity = new Vector2(horizontal, vertical).normalized * GlobalPlayerAttribute.PlayerMoveSpeed;
         }
         else
