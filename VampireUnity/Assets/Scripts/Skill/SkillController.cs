@@ -11,6 +11,9 @@ public class SkillController : XSingleton<SkillController>
     //技能相关
     [NonSerialized]public ParticleSystem IceArrow;
     [NonSerialized]public ParticleSystem NormalAttack;
+    [NonSerialized]public ParticleSystem IceExplosion1;
+    [NonSerialized]public ParticleSystem IceExplosion2;
+    [NonSerialized]public ParticleSystem IceExplosion3;
     void Start()
     {
         //技能相关
@@ -18,6 +21,12 @@ public class SkillController : XSingleton<SkillController>
         IceArrow.Stop();
         NormalAttack= GameController.S.transform.Find("Player(Clone)/Pistol(Clone)/NormalAttack").GetComponent<ParticleSystem>();
         NormalAttack.Stop();
+        IceExplosion1= GameController.S.transform.Find("Player(Clone)/IceExplosion/IceExplosion1/IceExplosionP1").GetComponent<ParticleSystem>();
+        IceExplosion2= GameController.S.transform.Find("Player(Clone)/IceExplosion/IceExplosion2/IceExplosionP2").GetComponent<ParticleSystem>();
+        IceExplosion3= GameController.S.transform.Find("Player(Clone)/IceExplosion/IceExplosion2/IceExplosionP3").GetComponent<ParticleSystem>();
+        IceExplosion1.Stop();
+        IceExplosion2.Stop();
+        IceExplosion3.Stop();
     }
 
     // Update is called once per frame
@@ -40,6 +49,13 @@ public class SkillController : XSingleton<SkillController>
         {
            IceArrow.Play();
            IceArrow.transform.Find("Trail").gameObject.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Debug.Log("aaaa");
+            IceExplosion1.Play();
+            IceExplosion2.Play();
+            IceExplosion3.Play();
         }
         if (IsDash ==true)
         {
