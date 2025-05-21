@@ -52,7 +52,6 @@ public class SkillController : XSingleton<SkillController>
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("aaaa");
             IceExplosion1.Play();
             IceExplosion2.Play();
             IceExplosion3.Play();
