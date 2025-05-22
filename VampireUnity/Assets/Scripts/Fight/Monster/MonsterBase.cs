@@ -100,6 +100,13 @@ public abstract class MonsterBase : MonoBehaviour
 
     public void Die()
     {
+        //增加经验
+        GlobalPlayerAttribute.Exp+= Exp;
+        if(GlobalPlayerAttribute.Exp>GlobalPlayerAttribute.ExpDic[GlobalPlayerAttribute.Level])
+        {
+            GlobalPlayerAttribute.Level++;
+            GlobalPlayerAttribute.Exp=0;
+        }
         //增加BOSS能量
         switch (MonsterType)
         {

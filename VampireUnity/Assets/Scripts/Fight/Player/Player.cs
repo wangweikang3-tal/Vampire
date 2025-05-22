@@ -10,13 +10,6 @@ public class Player : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public GunBase currentGun;
     private float _gunDistance = 0.3f;
-    public Joystick joystick;//虚拟移动杆
-    public Button normalAttackButton;//普通攻击按钮
-    public Button dashButton;
-    public Button rageButton;
-    public Button shieldButton;
-    public Button iceArrowButton;
-    public Button iceExButton;
     public GameObject iceBall;
 
 
@@ -24,33 +17,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        
-        
-        normalAttackButton.onClick.AddListener(() =>
-        {
-            GameController.S.gamePlayer.currentGun.Shot();
-        });
-        dashButton.onClick.AddListener(() =>
-        {
-            SkillController.S. IsDash = true;
-        });
-        rageButton.onClick.AddListener(() =>
-        {
-            GameController.S.gamePlayer.transform.Find("Rage").gameObject.SetActive(true);
-        });
-        shieldButton.onClick.AddListener(() =>
-        {
-            GameController.S.gamePlayer.transform.Find("Shield").gameObject.SetActive(true);
-        });
-        iceArrowButton.onClick.AddListener(() =>
-        {
-            SkillController.S.IceArrow.Play();
-            SkillController.S.IceArrow.transform.Find("Trail").gameObject.SetActive(true);        });
-        iceExButton.onClick.AddListener(() =>
-        {
-            SkillController.S.IceExplosion1.Play();
-            SkillController.S.IceExplosion2.Play();
-            SkillController.S.IceExplosion3.Play();        });
         currentGun = Instantiate(Resources.Load<GameObject>("Prefabs/Gun/Pistol").GetComponent<GunBase>(),transform);
     }
     
@@ -60,7 +26,7 @@ public class Player : MonoBehaviour
     public void PlayerMoveAnimation()
     {
         //获得输入
-        Vector2 joydir = joystick.input.normalized;
+        Vector2 joydir = FightBGController.S.joystick.input.normalized;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         if(joydir==Vector2.zero)
@@ -89,7 +55,7 @@ public class Player : MonoBehaviour
         //获得输入
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector2 joydir = joystick.input.normalized;
+        Vector2 joydir = FightBGController.S.joystick.input.normalized;
         if (joydir.x > 0)
         {
             spriteRenderer.flipX = false;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EliteSnotMonster : MonsterBase
 {
-    public EliteSnotMonster() : base(MonsterType.Elite, "EliteSnotMonster", 1, 1000, 0.3f, 20, 5, 500, 100, 10) { }
+    public EliteSnotMonster() : base(MonsterType.Elite, "EliteSnotMonster", 1, 1000, 0.3f, 20, 5, 50, 100, 10) { }
     public override void AddMonsterEquip()
     {
         MonsterEquipList.Add(new MonsterEquip("PrimaryClothFight", 10));

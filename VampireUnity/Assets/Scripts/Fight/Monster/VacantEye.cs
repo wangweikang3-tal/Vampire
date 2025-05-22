@@ -5,7 +5,7 @@ using UnityEngine;
 public class VacantEye : MonsterBase
 {
     [NonSerialized]public VacantEyeBullet VacantEyeBullet;
-    public VacantEye() : base(MonsterType.Boss, "VacantEye", 1, 10000, 0.3f, 20, 5, 50, 10, 100) { }
+    public VacantEye() : base(MonsterType.Boss, "VacantEye", 1, 10000, 0.3f, 20, 5, 500, 10, 100) { }
     [NonSerialized] public float SkillTime = 10;
     [NonSerialized] public float CurrentSkillTime = 0;
      public GameObject LaserObject;
