@@ -32,6 +32,11 @@ public class SkillController : XSingleton<SkillController>
     // Update is called once per frame
     void Update()
     {
+        //GameController.S.gamePlayer.iceBall.transform.rotation.z每帧+2
+        if (GameController.S.gamePlayer.iceBall != null)
+        {
+            GameController.S.gamePlayer.iceBall.transform.Rotate(0, 0, 8);
+        }
         //如果按下了h
         if (Input.GetKeyDown(KeyCode.H))
         {

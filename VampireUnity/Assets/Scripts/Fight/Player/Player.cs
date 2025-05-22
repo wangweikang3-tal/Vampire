@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public Button shieldButton;
     public Button iceArrowButton;
     public Button iceExButton;
+    public GameObject iceBall;
 
 
 

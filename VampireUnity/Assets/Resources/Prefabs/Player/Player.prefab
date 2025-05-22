@@ -1841,6 +1841,7 @@ MonoBehaviour:
   shieldButton: {fileID: 8710658706825451550}
   iceArrowButton: {fileID: 4082175518330018792}
   iceExButton: {fileID: 5245462489078425275}
+  iceBall: {fileID: 5865060880631849789}
 --- !u!95 &2492979357172400397
 Animator:
   serializedVersion: 7
@@ -2002,7 +2003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6006942439176904806, guid: 8e03a0b6e3ff9401d9c981479c09827f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2012,6 +2013,11 @@ PrefabInstance:
 --- !u!4 &493186674568803115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 351339266391109744, guid: 8e03a0b6e3ff9401d9c981479c09827f, type: 3}
+  m_PrefabInstance: {fileID: 159899336388526939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5865060880631849789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6006942439176904806, guid: 8e03a0b6e3ff9401d9c981479c09827f, type: 3}
   m_PrefabInstance: {fileID: 159899336388526939}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4957741251072381911
