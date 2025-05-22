@@ -1,8 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GlobalPlayerAttribute 
 {
    public static int CurrentHp=100;
+   //等级相关
+   public static int Level=1;
+   public static int Exp=0;
+   public static Dictionary<int,int> ExpDic=new Dictionary<int,int>();
+   
    
    //人物属性
    public static int PlayerMaxHp=100;

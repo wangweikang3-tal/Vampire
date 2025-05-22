@@ -173,7 +173,7 @@ namespace Mysql
             }
             return maxID>70000000?maxID:70000000;
         }
-        
+        //读取mysql的experience表的数据，有level和value两列
         public int MaxHelmetID()
         {
             //获取mysql的equip表中的equipid在10000000-19999999之间的最大值

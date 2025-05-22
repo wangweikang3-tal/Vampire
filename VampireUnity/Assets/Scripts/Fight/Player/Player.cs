@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        
+        
         normalAttackButton.onClick.AddListener(() =>
         {
             GameController.S.gamePlayer.currentGun.Shot();

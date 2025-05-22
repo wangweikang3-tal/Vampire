@@ -34,6 +34,7 @@ public class GameController : XSingleton<GameController>
     [NonSerialized]public MonsterBase CurrentBoss;
     private void Awake()
     {
+        GlobalPlayerAttribute.ExpDic = ExperienceController.S.GetExperienceFromMysql();
         var _ = SkillController.S;//激活SkillController
         Application.targetFrameRate = 30;
         MonsterBirthPoint = Instantiate(Resources.Load<GameObject>("Prefabs/Tool/MonsterBirthPoint"), transform);
